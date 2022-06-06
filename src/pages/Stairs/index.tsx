@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "./StairsCalc.scss";
 import { useForm } from "react-hook-form";
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 
 import item from "../../assets/calc_img/stairs.jpg"
 
 const StairsCalc = () => {
-const {register, handleSubmit} = useForm({mode: 'onTouched', reValidateMode: 'onChange'})
 
-const [active, setActive] = useState("")
-const [price, setPrice] = useState(0)
+  const validationSchema = Yup.object().shape({
+    material: Yup.string()
+        .required('Material is required'),
+    length: Yup.string()
+        .required('Length is required'),
+    width: Yup.string()
+        .required('Width is required'),
+        rise: Yup.string()
+        .required('Rise is required'),
+    name: Yup.string()
+        .required('Name is required'),
+    mobile: Yup.string()
+        .required('Mobile is required')
+        .matches(/^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/, 'Mobile must be valid'),
+  });
+  
+const {register, handleSubmit} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
+
+const [active, setActive] = useState("item_sosna")
+const [price, setPrice] = useState(12000)
 const [length, setLength] = useState(0)
 const [width, setWidth] = useState(0)
 const [rise, setRise] = useState(0)
@@ -22,7 +40,7 @@ useEffect(() => {
 
 const HandleChangeMaterial = (event) => {
   setActive(event.target.id)
-  setPrice(event.target.value)
+  setPrice(event.target.value.split("-")[1])
 }
 
 const HandleChangeLength = (event) => {
@@ -53,42 +71,42 @@ return (
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
             <label className={active === "item_sosna" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="12000" className="material-radio" id="item_sosna"
+              <input {...register('material')} type="radio" value="sosna-12000" className="material-radio" id="item_sosna" defaultChecked
                 onChange={HandleChangeMaterial}
               />
               <span className="material-name">СОСНА</span>
               <span className="material-price">12000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_vilha" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="2000" className="material-radio" id="item_vilha"
+              <input {...register('material')} type="radio" value="vilha-2000" className="material-radio" id="item_vilha"
                 onChange={HandleChangeMaterial}
               />
               <span className="material-name">ВІЛЬХА</span>
               <span className="material-price">2000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_yasen" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="3000" className="material-radio" id="item_yasen"
+              <input {...register('material')} type="radio" value="yasen-3000" className="material-radio" id="item_yasen"
                 onChange={HandleChangeMaterial}
               />
               <span className="material-name">ЯСЕН</span>
               <span className="material-price">3000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_dyb" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="4000" className="material-radio" id="item_dyb"
+              <input {...register('material')} type="radio" value="dyb-4000" className="material-radio" id="item_dyb"
                 onChange={HandleChangeMaterial}
               />
               <span className="material-name">ДУБ</span>
               <span className="material-price">4000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_yasen_extra" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="5000" className="material-radio" id="item_yasen_extra"
+              <input {...register('material')} type="radio" value="yasen_extra-5000" className="material-radio" id="item_yasen_extra"
                 onChange={HandleChangeMaterial}
               />
               <span className="material-name">ЯСЕН (ЩІЛЬНА)</span>
               <span className="material-price">5000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_dyb_extra" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="6000" className="material-radio" id="item_dyb_extra"
+              <input {...register('material')} type="radio" value="dyb_extra-6000" className="material-radio" id="item_dyb_extra"
                 onChange={HandleChangeMaterial}
               />
               <span className="material-name">ДУБ (ЩІЛЬНА)</span>
