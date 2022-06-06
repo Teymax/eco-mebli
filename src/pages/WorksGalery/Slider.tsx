@@ -10,7 +10,6 @@ const Slider = ({ children, startIndex, active, setActive, title }: any) => {
   const SLIDE_WIDTH = 100;
 
   useEffect(() => {
-    console.log(offset);
     setOffset(startIndex && -SLIDE_WIDTH * startIndex);
     setSlides(
       Children.map(children, (child) => {
@@ -29,7 +28,7 @@ const Slider = ({ children, startIndex, active, setActive, title }: any) => {
     e.stopPropagation();
     setOffset((currentOffset) => {
       const newOffset = currentOffset + SLIDE_WIDTH;
-      console.log(active);
+
       return Math.min(newOffset, 0);
     });
   };
@@ -40,7 +39,7 @@ const Slider = ({ children, startIndex, active, setActive, title }: any) => {
       const newOffset = currentOffset - SLIDE_WIDTH;
 
       const maxOffset = -(SLIDE_WIDTH * (slides.length - 1));
-      console.log(active);
+
       return Math.max(maxOffset, newOffset);
     });
   };
