@@ -63,6 +63,7 @@
       h2 {
         font-size: 200px;
         font-weight: 800;
+     
 
         span {
           margin-left: 0.7em;
@@ -197,4 +198,22 @@
     }
   }
 }
+@media (max-width: $xs){
+  .slide {
+    &_body {
+      &-text {
+        margin-top: 215px;
 
+        &_firstMt {
+          margin-top: -85px;;
+        }
+        h2 {
+          font-size: 65px;
+        }
+      }
+    }
+}
+  .arrow{
+    display: none;
+  }
+}
