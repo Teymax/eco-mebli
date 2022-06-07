@@ -39,8 +39,40 @@ const Carousel = ({ children }: any) => {
     });
   };
 
+  const [touchPosition, setTouchPosition] = useState(null);
+  // ...
+  const handleTouchStart = (e) => {
+    const touchDown = e.touches[0].clientX;
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    if (diff > 5) {
+      handleRightArrowClick();
+    }
+
+    if (diff < -5) {
+      handleLeftArrowClick();
+    }
+
+    setTouchPosition(null);
+  };
+
   return (
-    <div className="carousel-container">
+    <div
+      className="carousel-container"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
       <div className="arrow arrow-L" onClick={handleLeftArrowClick}>
         {LEFT_ARROW}
       </div>
