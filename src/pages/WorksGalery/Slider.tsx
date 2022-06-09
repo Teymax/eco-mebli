@@ -43,10 +43,41 @@ const Slider = ({ children, startIndex, active, setActive, title }: any) => {
       return Math.max(maxOffset, newOffset);
     });
   };
+
+  const [touchPosition, setTouchPosition] = useState(null);
+
+  const handleTouchStart = (e) => {
+    const touchDown = e.touches[0].clientX;
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    if (diff > 5) {
+      handleRightArrowClick(e);
+    }
+
+    if (diff < -5) {
+      handleLeftArrowClick(e);
+    }
+
+    setTouchPosition(null);
+  };
+
   return (
     <div
       className={active ? "slider-wrapper" : "slider-closed"}
       onClick={() => setActive(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
     >
       <div className="slider-container">
         <span className="slider-title">{title}</span>

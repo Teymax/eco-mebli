@@ -9,10 +9,10 @@ const WorkOption = ({
   title,
   titleClassName
 }) => {
-  
+  //to={`/works/${title}`}
   return (
     <Link
-      to={`/works/${title}`}
+      to={`/works/${title==="кухні" ? "kitchen":""}`}
       state={{title}}
       className={backgroundClassName}
       style={{
