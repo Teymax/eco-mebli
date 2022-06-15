@@ -1,0 +1,60 @@
+@import "../../styles/palette.scss";
+
+.apperContainer{
+    background-image: url("../../../public/assets/works_images/apper_background.png");
+    padding-top: 30px;
+    height: 237px;
+    width: 100%;
+    filter: blur(80px);
+    position: absolute;
+    z-index: -1;
+}
+
+.text{
+    font-family: $primaryFont;
+    font-style: normal;
+    font-weight: 800;
+    text-align: left;
+    line-height: 100.4%;
+    text-align: left;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: $mainTextColor;
+    z-index: 2;
+}
+
+.title{
+    font-size: 64px;
+    padding-top: 178px;
+    
+}
+.tel{
+    font-size: 24px;
+    padding-top: 25px;
+}
+.email{
+    font-size: 24px;
+    padding-top: 104px;
+}
+.media-title{
+    font-size: 36px;
+    padding-top: 75px;
+}
+
+.icons{  
+    padding-top: 36px;
+}
+
+.icon{
+    width: 35px;
+    height: 35px;
+}
+.icon:nth-child(1){
+    padding-right: 33px;
+}
+
+
+@media (max-width: $xs) {
+   
+    
+  }

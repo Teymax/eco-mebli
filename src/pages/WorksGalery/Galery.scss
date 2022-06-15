@@ -3,9 +3,7 @@
     background-image: url("../../../public/assets/works_images/apper_background.png");
     background-repeat: no-repeat;
     background-size: 100%;
-   // z-index: -1;
     height: 350px;
-   // width: 100%;
     padding-top: 30px;
    
   
@@ -72,6 +70,7 @@
       }
     }
 }
+
 
 
 .offers{
@@ -386,9 +385,11 @@
   .slider{
 
     &-title{
-     // width: 200px;
-      //margin: auto;
-      margin-left: 25%;
+      width: 200px;
+      margin: auto;
+      left: 0;
+      right: 0;
+      //margin-left: 25%;
     }
     &-wrapper{
       position: fixed;

@@ -80,7 +80,9 @@ const Slider = ({ children, startIndex, active, setActive, title }: any) => {
       onTouchMove={handleTouchMove}
     >
       <div className="slider-container">
-        <span className="slider-title">{title}</span>
+        <div>
+        <h2 className="slider-title">{title}</h2>
+        </div>
         <div className="slider-content">
           <div className="arrow arrow-l" onClick={handleLeftArrowClick}>
             {LEFT_ARROW}
