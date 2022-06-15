@@ -97,11 +97,11 @@ const Main = () => {
         </div>
       </Carousel>
       <About />
-      <Services />
+     
     </>
   );
 };
-
+// <Services />
 const circleSvg = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
