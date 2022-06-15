@@ -1,7 +1,7 @@
 @import "../../styles/palette.scss";
 
 .wrapper{
-    margin-bottom: 450px;
+    margin-bottom: 600px;
 }
 
 .header {
@@ -26,7 +26,7 @@
     margin-bottom: 5px;
     font-family: $primaryFont;
     font-weight: 600;
-
+  
     &-title {
         height: 64px;
         width: 750px;
@@ -38,7 +38,7 @@
     }
 
     &-text {
-        padding-top: 23px;     
+        padding-top: 23px;
         font-size: 14px;
         line-height: 163.9%;
         letter-spacing: 0.02em;
@@ -50,7 +50,7 @@
 
     &-calc_block {
         margin-top: 50px;
-        height: 832px;
+        height: auto;
         background: rgba(201, 173, 152, 0.05);
     }
 
@@ -64,7 +64,7 @@
 
     &-img {
         margin-top: 50px;
-        height: 832px;
+        height: 900px;
     }
 }
 
@@ -80,7 +80,6 @@
     &-radio {
         visibility: hidden;
 
-        
         &:hover {
             visibility: visible;
             margin: 0 0 0 26px;
@@ -92,7 +91,7 @@
             height: 18px;
             width: 18px;
         }
-
+        
         &:checked {
             visibility: visible;
             margin: 0 0 0 26px;
@@ -105,6 +104,7 @@
             height: 18px;
             width: 18px;
         }
+
     }
 
     &-name {
@@ -123,6 +123,7 @@
         margin-left: auto;
         margin-right: 30px;
     }
+    
     &:hover {
         background-color: $secondMainTextColor;
     }
@@ -236,7 +237,7 @@
 .contact-info {
     display: grid;
     grid-template-columns: 2fr 3fr;
-    margin: 50px 80px 0 80px;
+    margin: 30px 80px 0 80px;
     font-family: $primaryFont;
     font-weight: 600;
 
@@ -269,7 +270,7 @@
 
 .submit-button {
     display: block;
-    margin: 70px 80px 0 auto;
+    margin: 20px 80px 20px auto;
     width: 295px;
     height: 56px;
     background-color: $secondMainTextColor;
@@ -279,4 +280,12 @@
     line-height: 21px;
     letter-spacing: 0.05em;
     cursor: pointer;
+}
+
+.error-message{
+    color: $errorMessage;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    margin-left: 80px;
 }

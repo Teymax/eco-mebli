@@ -64,7 +64,7 @@
 
     &-img {
         margin-top: 50px;
-        height: 900px;
+        height: 960px;
     }
 }
 
@@ -79,7 +79,7 @@
 
     &-radio {
         visibility: hidden;
-
+        
         &:hover {
             visibility: visible;
             margin: 0 0 0 26px;
@@ -91,7 +91,7 @@
             height: 18px;
             width: 18px;
         }
-        
+
         &:checked {
             visibility: visible;
             margin: 0 0 0 26px;
@@ -104,7 +104,6 @@
             height: 18px;
             width: 18px;
         }
-
     }
 
     &-name {
@@ -123,9 +122,10 @@
         margin-left: auto;
         margin-right: 30px;
     }
+
     
     &:hover {
-        background-color: $secondMainTextColor;
+    background-color: $secondMainTextColor;
     }
 }
 
@@ -238,8 +238,6 @@
     display: grid;
     grid-template-columns: 2fr 3fr;
     margin: 30px 80px 0 80px;
-    font-family: $primaryFont;
-    font-weight: 600;
 
     &-block {
         height: 56px;
@@ -276,8 +274,19 @@
     background-color: $secondMainTextColor;
     border: none;
     color: $darkColor;
+    font-family: $primaryFont;
+     
+    font-weight: 600;
     font-size: 18px;
     line-height: 21px;
     letter-spacing: 0.05em;
     cursor: pointer;
+}
+
+.error-message{
+    color: $errorMessage;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    margin-left: 80px;
 }

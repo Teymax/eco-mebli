@@ -3,6 +3,7 @@ import "./DoorsCalc.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import axios from "axios"
 
 
 import item from "../../assets/calc_img/door.jpg"
@@ -22,10 +23,11 @@ const validationSchema = Yup.object().shape({
       .required('Name is required'),
   mobile: Yup.string()
       .required('Mobile is required')
-      .matches(/^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/, 'Mobile must be valid'),
+      .matches(/^((38)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,10}$/, 'Mobile must be valid'),
+  total: Yup.string(),
 });
 
-const {register, handleSubmit} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
+const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
 
 const [active, setActive] = useState("item_vilha")
 const [price, setPrice] = useState(15000)
@@ -36,6 +38,7 @@ const [totalPrice, setTotalPrice] = useState(0)
 
 useEffect(() => {
     setTotalPrice(price * length * width * area)
+    setValue('total', price * length * width * area)
   }, [price, length, width, area])
 
 const HandleChangeMaterial = (event) => {
@@ -53,6 +56,15 @@ const HandleChangeArea = (event) => {
   setArea(event.target.value)
 }
 
+const sendEmail = async (data) => {
+  try {
+    console.log(data);
+    const res = await axios.post("http://localhost:4000/send_email_door", data)
+  } catch (error) {
+    console.log(error)
+  }
+};
+
 return (
   <section className="wrapper">
     <div className="header" />
@@ -65,7 +77,9 @@ return (
       <div className="calc calc-items">
         <form className="calc-calc_block"
           onSubmit={handleSubmit((data) => {
-            console.log(data)
+            sendEmail(data)
+            setTotalPrice(0)
+            reset()
           })}
         >
           <p className="calc-calc_titles">СИРОВИНА</p>
@@ -73,6 +87,7 @@ return (
           <label className={active === "item_vilha" ? "material material_active" : "material "}>
               <input {...register('material')} type="radio" value="vilha-15000" className="material-radio" id="item_vilha" defaultChecked
                 onChange={HandleChangeMaterial}
+                name="material"
               />
               <span className="material-name">ВІЛЬХА</span>
               <span className="material-price">15000 ГРН/КВ.М</span>
@@ -80,6 +95,7 @@ return (
             <label className={active === "item_sosna" ? "material material_active" : "material "}>
               <input {...register('material')} type="radio" value="sosna-12000" className="material-radio" id="item_sosna"
                 onChange={HandleChangeMaterial}
+                name="material"
               />
               <span className="material-name">СОСНА</span>
               <span className="material-price">12000 ГРН/КВ.М</span>
@@ -87,6 +103,7 @@ return (
             <label className={active === "item_yasen" ? "material material_active" : "material "}>
               <input {...register('material')} type="radio" value="yasen-18000" className="material-radio" id="item_yasen"
                 onChange={HandleChangeMaterial}
+                name="material"
               />
               <span className="material-name">ЯСЕН</span>
               <span className="material-price">18000 ГРН/КВ.М</span>
@@ -94,6 +111,7 @@ return (
             <label className={active === "item_dyb" ? "material material_active" : "material "}>
               <input {...register('material')} type="radio" value="dyb-22000" className="material-radio" id="item_dyb"
                 onChange={HandleChangeMaterial}
+                name="material"
               />
               <span className="material-name">ДУБ</span>
               <span className="material-price">22000 ГРН/КВ.М</span>
@@ -104,7 +122,7 @@ return (
             <label className="area-title_block">
               <p className="area-title">ДОВЖИНА МАРШУ</p>
             </label>
-            <input {...register('length')} type="text" className="area-input" placeholder="_ _ _ _ _" id="length"
+            <input {...register('length')} type="text" className="area-input" placeholder="_ _ _ _ _" id="length" name="length"
               onChange={HandleChangeLength}
             />
             <label className="area-size_block">
@@ -115,7 +133,7 @@ return (
             <label className="area-title_block">
               <p className="area-title">ДОВЖИНА МАРШУ</p>
             </label>
-            <input {...register('width')} type="text" className="area-input" placeholder="_ _ _ _ _" id="width"
+            <input {...register('width')} type="text" className="area-input" placeholder="_ _ _ _ _" id="width" name="width"
               onChange={HandleChangeWidth}
             />
             <label className="area-size_block">
@@ -126,13 +144,17 @@ return (
             <label className="area-title_block">
               <p className="area-title">ПЛОЩА</p>
             </label>
-            <input {...register('area')} type="text" className="area-input" placeholder="_ _ _ _ _" id="area"
+            <input {...register('area')} type="text" className="area-input" placeholder="_ _ _ _ _" id="area" name="area"
               onChange={HandleChangeArea}
             />
             <label className="area-size_block">
               <p className="area-size">М.</p>
             </label>
           </div>
+          {
+            errors.length || errors.width || errors.area ?
+            <span className="error-message">Будь ласка, вкажіть параметри дверей <br/></span> : <></>
+          }
           <label className="total-price">
             <span className="total-price-text">ЗАГ. ВАРТІСТЬ</span>
             <span className="total-price-result">{totalPrice}<p className="total-price-currency">ГРН</p></span>
@@ -144,7 +166,7 @@ return (
               </p>
             </div>
             <div className="contact-info-block">
-              <input type="text" className="contact-info-input" {...register('name')}/>
+              <input type="text" className="contact-info-input" {...register('name')} name="name"/>
             </div>
             <div className="contact-info-block">
               <p className="contact-info-text">
@@ -152,9 +174,14 @@ return (
               </p>
             </div>
             <div className="contact-info-block">
-              <input type="text" className="contact-info-input" {...register('mobile')}/>
+              <input type="text" className="contact-info-input" {...register('mobile')} name="mobile"/>
             </div>
           </div>
+          {
+            errors.mobile ||
+            errors.name ?
+            <span className="error-message">Будь ласка, вкажіть дійсні данні <br/></span> : <></>
+          }
           <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
         </form>
         <img src={item} alt="kitchen_img" className="calc-img" />
