@@ -21,13 +21,14 @@ header {
   }
 }
 
+
 nav {
   display: flex;
   justify-content: space-between;
   width: 50%;
   margin: auto;
   @media (max-width: $xs){
-    width: 90%;
+   display: none;
   }
 
 
@@ -36,7 +37,7 @@ nav {
     font-size: 24px;
     transition: 0.4s;
     @media (max-width: $xs){
-      font-size: 18px;
+      font-size: 20px;
     }
 
     &:hover {
@@ -46,6 +47,38 @@ nav {
   }
 }
 
+.menu{
+  display: none;
+}
+
+.burger_btn{
+  display: none;
+}
+
+
+
+
+.active{
+  display: flex;
+  width: 40%;
+  background-color: #343434c1;
+  transition: 0.6s ease-in-out;
+}
+
+.mobMenu {
+ // display: none;
+  
+
+ 
+ // transform: rotateX(-200%);
+
+ a{
+  margin-bottom: 15px;
+ }
+}
+
+
+
 @media (max-width: $lg) {
   header {
     .logo {
@@ -53,4 +86,64 @@ nav {
     }
   }
   
+}
+@media (max-width: $xs){
+  .menu{
+    display: flex;
+    align-items: center;
+   
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 15px 40px;
+    //height: 150px;
+    
+  }
+  .mobMenu{
+    //display: none;
+    //display: flex;
+   position: absolute;
+   top: 0;
+   right: 0;
+   transition: 0.6s ease-in-out;
+   padding: 20px 30px;
+   flex-direction: column;
+   //width: 40%;
+   margin-right: 0;
+   transition-property: width;
+   transition-duration: .2s;
+  
+  }
+  .burger_btn::after{
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    background-color: $secondTextColor;
+    height: 2px;
+  }
+  .burger_btn::before{
+    content: " ";
+    position: absolute;
+    top: 0;
+    width: 20px;
+    background-color: $secondTextColor;
+    height: 2px;
+  }
+  .burger_btn{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    text-align: center;
+  }
+  .burger_btn span{
+
+    content: " ";
+    position: absolute;
+    top: 9px;
+    width: 20px;
+    background-color: $secondTextColor;
+    height: 2px;
+  }
 }

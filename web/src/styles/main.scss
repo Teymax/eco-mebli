@@ -53,6 +53,10 @@ a {
     max-width: 925px;
   }
 
+  @media (max-width: $md) {
+    max-width: 825px;
+  }
+
   @media (max-width: $xs) {
     max-width: 350px;
   }

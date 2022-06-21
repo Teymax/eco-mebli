@@ -1,6 +1,6 @@
 import React from "react";
 import "./Services.scss";
-
+import { useState } from "react";
 import services_1 from "../../../assets/img/services-1.jpg";
 import services_2 from "../../../assets/img/services-2.jpg";
 import services_3 from "../../../assets/img/services-3.jpg";
@@ -10,8 +10,117 @@ import services_6 from "../../../assets/img/services-6.jpg";
 import { Link } from "react-router-dom";
 
 const Services = () => {
+  const [active, setActive] = useState(false);
   return (
+    /*
     <section>
+      <div className="container">
+        <div className="services services-top">
+          <Link
+            to="/"
+            className="services-item"
+            //className={active?"services-mobitem":"services-item"}
+            onTouchEnd={() => setActive(!active)}
+            style={{
+              backgroundImage: `url(${services_1})`,
+            }}
+            //<h4 className="services-item_hovered-title">світло</h4>
+          >
+            <div className='services-item_hovered'>
+            <h4 className={active ? "services-item_hovered-title-act" : "services-item_hovered-title"}>світло</h4>
+            </div>
+          </Link>
+          <Link
+            to="/"
+            className="services-item"
+            //className={active?"services-mobitem":"services-item"}
+            onTouchEnd={() => setActive(!active)}
+            style={{
+              backgroundImage: `url(${services_2})`,
+            }}
+          >
+            <div className={active ? "services-item_hovered" : "passsive"}>
+              <h4 className="services-item_hovered-title">підстінники</h4>
+            </div>
+          </Link>
+          <Link
+            to="/"
+            className="services-item"
+            onTouchEnd={() => setActive(!active)}
+            style={{
+              backgroundImage: `url(${services_3})`,
+            }}
+          >
+            <div className={active ? "services-item_hovered" : "passsive"}>
+              <h4 className="services-item_hovered-title">стільці</h4>
+            </div>
+          </Link>
+        </div>
+        <div className="services services-bottom">
+          <Link
+            to="/"
+            className="services-item"
+            onTouchEnd={() => setActive(!active)}
+            style={{
+              backgroundImage: `url(${services_4})`,
+            }}
+          >
+            <div className={active ? "services-item_hovered" : "passsive"}>
+              <h4 className="services-item_hovered-title">двері</h4>
+              <Link to="/" className="services-item_hovered-icon">
+                {calculatorSvg}
+              </Link>
+            </div>
+          </Link>
+          <Link
+            to="/"
+            className="services-item"
+            onTouchEnd={() => setActive(!active)}
+            style={{
+              backgroundImage: `url(${services_5})`,
+            }}
+          >
+            <div className={active ? "services-item_hovered" : "passsive"}>
+              <h4 className="services-item_hovered-title">столи</h4>
+            </div>
+          </Link>
+          <Link
+            to="/"
+            className="services-item"
+            onTouchEnd={() => setActive(!active)}
+            style={{
+              backgroundImage: `url(${services_6})`,
+            }}
+          >
+            <div className={active ? "services-item_hovered" : "passsive"}>
+              <h4 className="services-item_hovered-title">сходи</h4>
+              <Link to="/" className="services-item_hovered-icon">
+                {calculatorSvg}
+              </Link>
+            </div>
+          </Link>
+        </div>
+
+        <div className="servicesLinks">
+          <Link to="/">
+            доставка <br /> та монтаж
+          </Link>
+          <Link to="/">
+            безкоштовна <br /> консультація
+          </Link>
+          <Link to="/">
+            виїзд <br /> на заміри
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+*/
+
+ <section>
       <div className="container">
         <div className="services services-top">
           <Link
@@ -105,7 +214,6 @@ const Services = () => {
     </section>
   );
 };
-
 const calculatorSvg = (
   <svg
     xmlns="http://www.w3.org/2000/svg"

@@ -128,3 +128,38 @@
     }
   }
 }
+
+@media (max-width: $xs){
+  .about-item {
+    margin: 80px 0 0 -45px;
+    flex-direction: column;
+    row-gap: 160px;
+
+   &_circule{ ////////////
+    ///margin: 0 0 0 auto;
+   }
+
+    &-description {
+      //width: 100%;
+      width: auto;
+    margin-left: -200px;
+    //word-break: break-all; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: $darkColor;
+
+      &-withLogo {
+
+        h6 {
+          font-size: 32px;
+          margin-top: 30px;
+          line-height: 1.5;
+        }
+
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+}

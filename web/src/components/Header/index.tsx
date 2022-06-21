@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Header.scss";
@@ -30,17 +31,30 @@ const logoSvg = (
 );
 
 const Header = () => {
+  const [active, setActive] = useState(false);
   return (
     <header>
       <h1 className="logo">
         <Link to="/">{logoSvg}</Link>
       </h1>
+
       <nav>
         <Link to="/">головна</Link>
         <Link to="works">роботи</Link>
         <Link to="catalog">каталог</Link>
         <Link to="contacts">контакти</Link>
       </nav>
+      <div className={active ? "menu active" : "menu"}>
+        <div className="burger_btn" onClick={() => setActive(!active)}>
+          <span />
+        </div>
+        <nav className={active ? "mobMenu active" : "mobMenu"}>
+          <Link to="/">головна</Link>
+          <Link to="works">роботи</Link>
+          <Link to="catalog">каталог</Link>
+          <Link to="contacts">контакти</Link>
+        </nav>
+      </div>
     </header>
   );
 };
