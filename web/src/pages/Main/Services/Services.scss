@@ -1,0 +1,163 @@
+@import "../../../styles/palette.scss";
+
+.services {
+  height: 397px;
+  display: grid;
+  grid-column-gap: 5px;
+  margin-bottom: 5px;
+
+  &-top {
+    grid-template-columns: 1fr 5fr 1fr;
+  }
+
+  &-bottom {
+    grid-template-columns: 2fr 7fr 2fr;
+  }
+
+  &-item {
+    background: no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    background-size: 100% 100%;
+    transition: 0.6s ease-in-out;
+
+    &_hovered {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+   
+      
+      
+
+      &-title {
+        font-size: 24px;
+        text-transform: uppercase;
+        text-align: center;
+        color: $darkColor;
+        background: $secondColor;
+        padding: 8px 0;
+        width: 100%;
+
+        margin-top: -40px;
+        transition: 0.6s ease-in-out;
+
+        &-act{
+          margin-top: 0;
+        }
+      }
+
+      &-icon {
+        padding: 20.5px 22px;
+        border-radius: 50%;
+        background: $secondColor;
+
+        margin-bottom: -80px;
+        transition: 0.6s ease-in-out;
+      }
+    }
+
+    &:hover {
+      transition: 0.6s ease-in-out;
+      background-size: 110% 110%;
+
+      .services-item_hovered-title {
+        margin-top: 0;
+        transition: 0.6s ease-in-out;
+      }
+
+      .services-item_hovered-icon {
+        margin-bottom: 15px;
+        transition: 0.6s ease-in-out;
+      }
+    }
+  }
+}
+
+.servicesLinks {
+  display: flex;
+  justify-content: space-between;
+  margin: 170px 0 130px;
+
+  a {
+    font-size: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 2;
+    transition: 0.4s;
+
+    &:nth-child(2) {
+      text-align: center;
+    }
+
+    &:nth-child(3) {
+      text-align: right;
+    }
+
+    &:hover {
+      color: $secondColor;
+      transition: 0.4s;
+    }
+  }
+}
+
+@media (max-width: $lg) {
+  .services {
+    height: 307px;
+    
+    &-top {
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+  
+    &-bottom {
+      grid-template-columns: 1fr 3fr 1fr;
+    }
+  }
+
+  .servicesLinks a {
+    font-size: 32px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: $lg){
+  .services{
+    grid-template-columns: 1fr;
+    height: 1250px;
+    background-size: cover;
+    row-gap: 20px;
+
+    &-top{
+      margin-bottom: 20px;
+    }
+
+    &-item{
+      background-size: cover;
+    }
+  }
+
+  .servicesLinks{
+    flex-direction: column;
+    row-gap: 35px;
+  }
+
+  .servicesLinks a:nth-child(1){
+    text-align: center;
+  }
+
+  .servicesLinks a:nth-child(3){
+    text-align: center;
+  }
+}
+//
+.passsive{
+  display: none;
+  touch-action:pan-y;
+}
+
+.services-mobitem{
+  transition: 0.6s ease-in-out;
+  background-size: 110% 110%;
+  
+}
