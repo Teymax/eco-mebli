@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@hookform/resolvers": "^2.9.1",
+    "@types/react-router-dom": "^5.3.3",
+    "aos": "^3.0.0-beta.6",
+    "axios": "^0.27.2",
+    "react-hook-form": "^7.32.1",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "node your-script.js"
+  },
+  "devDependencies": {
+    "sass": "^1.52.3"
+  }
+}
