@@ -1,6 +1,6 @@
 @import "../../styles/palette.scss";
 
-.wrapper{
+.wrapper-stairs{
     margin-bottom: 600px;
 }
 
@@ -158,7 +158,7 @@
     }
 
     &-input {
-        width: 270px;
+        width: 100%;
         height: 56px;
         text-align: center;
         background-color: $unhoveredColor;
@@ -290,3 +290,30 @@
     letter-spacing: 0.05em;
     margin-left: 80px;
 }
+
+@media (max-width: $lg) {
+    .wrapper-stairs{
+      margin-bottom: 400px;
+    }
+
+  }
+  
+  @media (max-width: $md) {
+    .wrapper-stairs{
+      margin-bottom: 640px;
+    }
+
+  }   
+  
+  @media (max-width: $sm) {
+    .wrapper-stairs{
+        margin-bottom: 600px;
+      }
+  }
+  
+  @media (max-width: $xs) {
+    .wrapper-stairs{
+        margin-bottom: 700px;
+      }
+    
+  }

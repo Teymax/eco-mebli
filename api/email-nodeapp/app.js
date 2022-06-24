@@ -122,6 +122,38 @@ app.post("/send_email_stairs", async (req, res) => {
     })
 })
 
+app.post("/send_email_contact", async (req, res) => {
+  let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "soulrivsmtp@gmail.com",
+        pass: "cbuulutuwemhovjy"
+      },
+  })
+
+  await res.send(req.body)
+  
+  message = {
+      from: "soulrivsmtp@gmail.com",
+      to: "soulrivsmtp@gmail.com",
+      subject: "Новий контант",
+      text: `
+      Замовник -  ${req.body.name}
+      Контактний номер -  ${req.body.mobile}
+      E-mail -  ${req.body.email}
+      `
+  }
+  await transporter.sendMail(message, function(err, info) {
+      if (err) {
+        // console.log(err)
+      } else {
+        // console.log(info);
+      }
+  })
+})
+
 
 app.listen(
     4000, () => {
