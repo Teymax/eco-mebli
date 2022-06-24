@@ -1,6 +1,6 @@
 @import "../../styles/palette.scss";
 
-.wrapper{
+.wrapper-doors{
     margin-bottom: 600px;
 }
 
@@ -158,7 +158,7 @@
     }
 
     &-input {
-        width: 270px;
+        width: 100%;
         height: 56px;
         text-align: center;
         background-color: $unhoveredColor;

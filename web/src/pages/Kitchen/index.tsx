@@ -56,7 +56,7 @@ const sendEmail = async (data) => {
 };
 
 return (
-  <section className="wrapper">
+  <section className="wrapper-kitchen">
     <div className="header" />
     <div className="calc-header" />
     <div className="container">
