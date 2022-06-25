@@ -28,7 +28,7 @@
 
   &_body {
     display: flex;
-    margin: 83px 0;
+    margin: 83px 15px;
     justify-content: space-around;
     align-items: center;
 
@@ -170,7 +170,7 @@
   .slide {
     &_body {
       &-text {
-        margin-top: 215px;
+        margin-top: 371px;
 
         &_firstMt {
           margin-top: -85px;;
@@ -198,23 +198,27 @@
     }
   }
 }
-@media (max-width: $xs){
-  .slide {
+
+@media (max-width: $sm){
+    .slide {
     &_body {
       &-text {
         margin-top: 220px;
-        width: 111px;
+        width: 300px;
         z-index: 9;
+        margin-right: -100px;
 
         &_firstMt {
-          margin-top: -85px;;
+          margin-top: -25px;
+          
         }
         h2 {
-          font-size: 65px;
+          font-size: 105px;
+          
         }
         h4{
           margin-right: -200px;
-          margin-top: 20px;
+          margin-top: 25px;
         }
        
       }
@@ -224,8 +228,51 @@
      
 
       &-img{
-        margin: -83px 40px 0px 0px !important;
-        width: 100px;
+        margin: -140px 40px 0px 0px !important;
+        width: 250px;
+      }
+      
+    }
+    
+}
+  .arrow{
+    display: none;
+  }
+}
+
+@media (max-width: $xs){
+  .slide {
+    &_body {
+      &-text {
+        margin-top: 0px;
+        padding-top: 350px;
+        width: 200px;
+        z-index: 9;
+
+        &_firstMt {
+          margin-top: -85px;;
+        }
+        h2 {
+          font-size: 85px;
+        }
+        h4{
+          margin-right: -135px;
+          margin-top: 25px;
+          color: $secondTextColor;
+         
+        }
+       
+      }
+      
+      &-circle{
+        display: none;
+      }
+
+     
+
+      &-img{
+        margin: -150px 00px 0px 0px !important;
+        width: 210px;
       }
       
     }

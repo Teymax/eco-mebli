@@ -14,13 +14,19 @@ const About = () => {
   return (
     <section>
       <div className="container">
+        <div className="firstLogo">
+          <img src={logo} alt="logo" />
+        </div>
+
         <div className="about">
           <h2>
             хто
             <br /> ми?
           </h2>
 
-          <div className="vl"></div>
+          <div className="vl">
+            <div className="about_circule"></div>
+          </div>
 
           <div style={{ marginBottom: "60px" }}>
             <div
@@ -32,9 +38,12 @@ const About = () => {
               <div className="about-item-description">
                 <h5 className="about-item-description_subtitle">
                   Ми звичайнісінькі люди, з незвичною пристрастю до природи та
-                  домашнього затишку. Нас поєднує погляд на світ та потяг до
-                  прекрасного. Віримо, що світ довкола завжди ліпший коли ти з
-                  ним у гармонії.
+                  домашнього затишку.
+                  <br /> <br /> Нас поєднує погляд на світ та потяг до
+                  прекрасного.
+                  <br /> <br />
+                  Віримо, що світ довкола завжди ліпший коли ти з ним у
+                  гармонії.
                 </h5>
               </div>
             </div>
@@ -66,9 +75,11 @@ const About = () => {
                 <h3 className="about-item-description_title">Для чого?</h3>
                 <div className="about-item-description-withLogo">
                   <h6>
-                    Гармонія з навколишнім світом – те що потрібно кожному. Наша
-                    мета полягає в тому аби привносити цю гармонію у ваші життя
-                    та оселі.
+                    <b>
+                      Гармонія з навколишнім світом – те що потрібно кожному.
+                    </b>{" "}
+                    <br /> <br /> Наша мета полягає в тому аби привносити цю
+                    гармонію у ваші життя та оселі.
                   </h6>
                   <img src={logo} alt="logo" />
                 </div>
@@ -92,9 +103,11 @@ const About = () => {
             </div>
           </div>
         </div>
+        <img src={logo} alt="logo" className="lastLogo" />
       </div>
     </section>
   );
 };
 
 export default About;
+// <img src={logo} alt="logo" className="lastLogo" />
