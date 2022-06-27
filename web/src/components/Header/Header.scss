@@ -38,7 +38,7 @@ nav {
   justify-content: space-between;
   width: 50%;
   margin: auto;
-  @media (max-width: $md){
+  @media (max-width: $sm){
    display: none;
   }
 
@@ -96,7 +96,26 @@ nav {
       left: 8%;
     }
   }
+
 }
+@media  (max-width: $md){
+  
+  header {
+    .logo {
+      left: 3%;
+    }
+  }
+
+  nav{
+    width: 69%;
+  }
+
+    .menu{
+      display: none;
+    }
+   
+  }
+
 //@media (max-width: $xs){
   @media  (max-width: $sm){
   .menu{
