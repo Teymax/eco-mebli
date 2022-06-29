@@ -13,11 +13,10 @@ const About = () => {
 
   return (
     <section>
+      <div className="firstLogo">
+        <img src={logo} alt="logo" />
+      </div>
       <div className="container">
-        <div className="firstLogo">
-          <img src={logo} alt="logo" />
-        </div>
-
         <div className="about">
           <h2>
             хто
@@ -103,7 +102,7 @@ const About = () => {
             </div>
           </div>
         </div>
-       
+
         <div className="lastLogo">
           <img src={logo} alt="logo" />
         </div>
