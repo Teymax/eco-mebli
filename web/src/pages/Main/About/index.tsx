@@ -103,7 +103,10 @@ const About = () => {
             </div>
           </div>
         </div>
-        <img src={logo} alt="logo" className="lastLogo" />
+       
+        <div className="lastLogo">
+          <img src={logo} alt="logo" />
+        </div>
       </div>
     </section>
   );

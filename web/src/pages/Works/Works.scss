@@ -52,7 +52,7 @@
    
     &-option{
         background-repeat: no-repeat;
-        height: 320px;
+        height: 340px;
         background-position: center center;
         background-size: 100% ;
         overflow: hidden;
@@ -61,6 +61,10 @@
         &:first-child{
             grid-column-start: 1;
             grid-column-end: span 2;
+        }
+        
+        &:nth-child(3){
+            background-size: 100% 100%;
         }
 
         &_header{

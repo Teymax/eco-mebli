@@ -32,6 +32,7 @@ const logoSvg = (
 
 const Header = () => {
   const [active, setActive] = useState(false);
+  const toggleMenu = () => setActive((active) => !active);
   return (
     <header>
       <h1 className="logo">
@@ -45,14 +46,14 @@ const Header = () => {
         <Link to="contacts">контакти</Link>
       </nav>
       <div className={active ? "menu active" : "menu"}>
-        <div className="burger_btn" onClick={() => setActive(!active)}>
+        <div className="burger_btn" onClick={toggleMenu}>
           <span />
         </div>
         <nav className={active ? "mobMenu active" : "mobMenu"}>
-          <Link to="/">головна</Link>
-          <Link to="works">роботи</Link>
-          <Link to="catalog">каталог</Link>
-          <Link to="contacts">контакти</Link>
+          <Link onClick={toggleMenu} to="/" >головна</Link>
+          <Link onClick={toggleMenu} to="works" >роботи</Link>
+          <Link onClick={toggleMenu} to="catalog" >каталог</Link>
+          <Link onClick={toggleMenu} to="contacts" >контакти</Link>
         </nav>
       </div>
     </header>

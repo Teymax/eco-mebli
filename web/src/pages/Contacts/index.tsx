@@ -8,18 +8,20 @@ const Contacts = () => {
     <section>
       <div className="apperContainer"></div>
       <div className="container">
-        <p className="text title">контакти </p>
-        <p className="text email">hodakivskigmaks586@gmail</p>
-        <p className="text tel">(Номер телефону)</p>
-        <div className="media">
-          <p className="text media-title">соціальні мережі</p>
-          <div className="icons">
-            <a href="https://www.facebook.com/people/Максім-Ходаківський/100010979947511/">
-              <img src={facebookIcon} className="icon"></img>
-            </a>
-            <a href="https://www.instagram.com/eco_mebli/">
-              <img src={instagramIcon} className="icon"></img>
-            </a>
+        <div className="contactsWrapper">
+          <p className="text title">контакти </p>
+          <p className="text email">hodakivskigmaks586@gmail</p>
+          <p className="text tel">(Номер телефону)</p>
+          <div className="media">
+            <p className="text media-title">соціальні мережі</p>
+            <div className="icons">
+              <a href="https://www.facebook.com/people/Максім-Ходаківський/100010979947511/">
+                <img src={facebookIcon} className="icon"></img>
+              </a>
+              <a href="https://www.instagram.com/eco_mebli/">
+                <img src={instagramIcon} className="icon"></img>
+              </a>
+            </div>
           </div>
         </div>
       </div>

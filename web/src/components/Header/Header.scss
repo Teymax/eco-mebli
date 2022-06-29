@@ -39,8 +39,9 @@ nav {
   width: 50%;
   margin: auto;
   @media (max-width: $sm){
-   display: none;
-  }
+    display: none;
+   }
+ 
 
 
   a {
@@ -60,6 +61,7 @@ nav {
 
 .menu{
   display: none;
+ 
 }
 
 .burger_btn{
@@ -74,6 +76,9 @@ nav {
   width: 40%;
   background-color: #343434c1;
   transition: 0.6s ease-in-out;
+  @media (min-width: $md){
+    display: none;
+   }
 }
 
 .mobMenu {
