@@ -12,7 +12,7 @@ const Catalog = () => {
     <section className="catalog-wrapper">
       <div className="catalog-header">
       </div>
-      <div className="container">
+      <div className="localContainer">
         <h2 className="catalog-text">КАТАЛОГ</h2>
         <div className="catalog catalog-items">
           <Link
@@ -39,7 +39,7 @@ const Catalog = () => {
           </Link>
           <Link
             to={Routers.KITCHENCALC}
-            className="catalog-item"
+            className="catalog-item catalog_resp"
             style={{
               backgroundImage: `url(${item_3})`,
             }}
