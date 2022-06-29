@@ -17,8 +17,7 @@ const validationSchema = Yup.object().shape({
       .required('Length is required'),
   width: Yup.string()
       .required('Width is required'),
-  area: Yup.string()
-      .required('Area is required'),
+  area: Yup.string(),
   name: Yup.string()
       .required('Name is required'),
   mobile: Yup.string()
@@ -36,10 +35,12 @@ const [width, setWidth] = useState(0)
 const [area, setArea] = useState(0)
 const [totalPrice, setTotalPrice] = useState(0)
 
+
 useEffect(() => {
-    setTotalPrice(price * length * width * area)
-    setValue('total', price * length * width * area)
-  }, [price, length, width, area])
+  setTotalPrice(price * length * width)
+  setValue('area', length * width)
+  setValue('total', price * length * width)
+}, [length, width, price])
 
 const HandleChangeMaterial = (event) => {
   setActive(event.target.id)
@@ -66,10 +67,10 @@ const sendEmail = async (data) => {
 };
 
 return (
-  <section className="wrapper">
+  <section className="wrapper-doors">
     <div className="header" />
     <div className="calc-header" />
-    <div className="container">
+    <div className="localContainer">
       <div>
         <h2 className="calc-title">КАЛЬКУЛЯТОР ДВЕРЕЙ</h2>
         <p className="calc-text">РОЗРАХУЄМО ВАРТІСТЬ ЗАМОВЛЕННЯ</p>
@@ -79,6 +80,7 @@ return (
           onSubmit={handleSubmit((data) => {
             sendEmail(data)
             setTotalPrice(0)
+            console.log(data)
             reset()
           })}
         >
@@ -144,7 +146,7 @@ return (
             <label className="area-title_block">
               <p className="area-title">ПЛОЩА</p>
             </label>
-            <input {...register('area')} type="text" className="area-input" placeholder="_ _ _ _ _" id="area" name="area"
+            <input {...register('area')} type="text" className="area-input" placeholder="_ _ _ _ _" id="area" name="area" readOnly
               onChange={HandleChangeArea}
             />
             <label className="area-size_block">

@@ -56,10 +56,10 @@ const sendEmail = async (data) => {
 };
 
 return (
-  <section className="wrapper">
+  <section className="wrapper-kitchen">
     <div className="header" />
     <div className="calc-header" />
-    <div className="container">
+    <div className="localContainer">
       <div>
         <h2 className="calc-title">КАЛЬКУЛЯТОР КУХОНЬ</h2>
         <p className="calc-text">РОЗРАХУЄМО ВАРТІСТЬ ЗАМОВЛЕННЯ</p>
