@@ -229,7 +229,7 @@
       }
     }
     @media (max-width: $xs){
-      width: 320px;
+      width: 85%;
     }
   }
 
@@ -277,6 +277,13 @@
 
   box-shadow: inset 0px -150px 50px -75px $darkColor;
 
+  img{
+    background: no-repeat center center;
+              background-size: cover;
+              overflow: hidden;
+              width: 100%;
+              height: 100%;
+  }
   
     }
     .slide_body-circle img{
@@ -351,7 +358,8 @@
   
   .offers{
     height: auto;
-    width: 320px;
+    //width: 320px;
+    width: 85%;
     row-gap: 50px;
     margin: auto;
     &-top {

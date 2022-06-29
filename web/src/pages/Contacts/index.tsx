@@ -36,6 +36,7 @@ const Contacts = () => {
     <section className="wrapperContacts">
       <div className="apperContainer"></div>
       <div className="container">
+
         <p className="text title">контакти </p>
         <div className="gridBlock">
           <form className="contact-form"
@@ -95,6 +96,7 @@ const Contacts = () => {
                   <img src={instagramIcon} className="icon"></img>
                 </a>
               </div>
+
             </div>
           </div>
         </div>
