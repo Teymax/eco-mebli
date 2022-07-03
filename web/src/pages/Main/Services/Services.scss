@@ -163,11 +163,7 @@
   
 }
 
-@media (max-width: $sm){
-  .services-bottom{
-    padding-top: 20px;
-  }
-}
+
 
 @media (max-width: $md){
 
@@ -186,5 +182,13 @@
     font-size: 38px;
     line-height: 1.5;
     
+  }
+}
+@media (max-width: $sm){
+  .services-bottom{
+    padding-top: 20px;
+  }
+  .servicesLinks a{
+    font-size: 28px;
   }
 }
