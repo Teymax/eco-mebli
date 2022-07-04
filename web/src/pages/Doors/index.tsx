@@ -37,9 +37,9 @@ const [totalPrice, setTotalPrice] = useState(0)
 
 
 useEffect(() => {
-  setTotalPrice(price * length * width)
-  setValue('area', length * width)
-  setValue('total', price * length * width)
+  setTotalPrice(price * length * width / 10000)
+  setValue('area', ((length * width)/ 10000).toFixed(2))
+  setValue('total', (price * length * width / 10000))
 }, [length, width, price])
 
 const HandleChangeMaterial = (event) => {
@@ -60,7 +60,7 @@ const HandleChangeArea = (event) => {
 const sendEmail = async (data) => {
   try {
     console.log(data);
-    const res = await axios.post("http://localhost:4000/send_email_door", data)
+    const res = await axios.post("https://test.teymax.com/api/mailer.php", data)
   } catch (error) {
     console.log(error)
   }
@@ -80,10 +80,10 @@ return (
           onSubmit={handleSubmit((data) => {
             sendEmail(data)
             setTotalPrice(0)
-            console.log(data)
             reset()
           })}
         >
+          <input {...register('product')} type='hidden' value="doors"/>
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
           <label className={active === "item_vilha" ? "material material_active" : "material "}>
@@ -95,12 +95,12 @@ return (
               <span className="material-price">15000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_sosna" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="sosna-12000" className="material-radio" id="item_sosna"
+              <input {...register('material')} type="radio" value="sosna-15000" className="material-radio" id="item_sosna"
                 onChange={HandleChangeMaterial}
                 name="material"
               />
               <span className="material-name">СОСНА</span>
-              <span className="material-price">12000 ГРН/КВ.М</span>
+              <span className="material-price">15000 ГРН/КВ.М</span>
             </label>
             <label className={active === "item_yasen" ? "material material_active" : "material "}>
               <input {...register('material')} type="radio" value="yasen-18000" className="material-radio" id="item_yasen"
@@ -122,7 +122,7 @@ return (
           <p className="calc-calc_titles">КАЛЬКУЛЯТОР ВАРТОСТІ ТОВАРУ</p>
           <div className="area">
             <label className="area-title_block">
-              <p className="area-title">ДОВЖИНА МАРШУ</p>
+              <p className="area-title">ВИСОТА</p>
             </label>
             <input {...register('length')} type="text" className="area-input" placeholder="_ _ _ _ _" id="length" name="length"
               onChange={HandleChangeLength}
@@ -133,7 +133,7 @@ return (
           </div>
           <div className="area">
             <label className="area-title_block">
-              <p className="area-title">ДОВЖИНА МАРШУ</p>
+              <p className="area-title">ШИРИНА</p>
             </label>
             <input {...register('width')} type="text" className="area-input" placeholder="_ _ _ _ _" id="width" name="width"
               onChange={HandleChangeWidth}
@@ -150,7 +150,7 @@ return (
               onChange={HandleChangeArea}
             />
             <label className="area-size_block">
-              <p className="area-size">М.</p>
+              <p className="area-size">М.КВ.</p>
             </label>
           </div>
           {
@@ -159,7 +159,7 @@ return (
           }
           <label className="total-price">
             <span className="total-price-text">ЗАГ. ВАРТІСТЬ</span>
-            <span className="total-price-result">{totalPrice}<p className="total-price-currency">ГРН</p></span>
+            <span className="total-price-result">{totalPrice.toFixed(2)}<p className="total-price-currency">ГРН</p></span>
           </label>
           <div className="contact-info">
             <div className="contact-info-block">

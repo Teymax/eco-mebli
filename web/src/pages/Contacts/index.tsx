@@ -26,7 +26,7 @@ const Contacts = () => {
   const sendEmail = async (data) => {
     try {
       console.log(data);
-      const res = await axios.post("http://localhost:4000/send_email_contact", data)
+      const res = await axios.post("https://test.teymax.com/api/mailer.php", data)
     } catch (error) {
       console.log(error)
     }
@@ -45,6 +45,7 @@ const Contacts = () => {
             reset()
           })}
           >
+            <input {...register('product')} type='hidden' value="contact"/>
             <div className="contact-info-page">
               <div className="contact-info-page-block">
                 <p className="contact-info-page-text">
@@ -84,8 +85,9 @@ const Contacts = () => {
             </div>
           </form>
           <div>
-            <p className="text email">hodakivskigmaks586@gmail</p>
-            <p className="text tel">(Номер телефону)</p>
+            <p className="text email">hodakivskigmaks586@gmail.com</p>
+            <p className="text tel">+38 (093) 182 62 35</p>
+            <p className="text tel">+38 (098) 755 41 78</p>
             <div className="media">
               <p className="text media-title">соціальні мережі</p>
               <div className="icons">

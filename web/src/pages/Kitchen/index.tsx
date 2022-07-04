@@ -49,7 +49,7 @@ const HandleChangeArea = (event) => {
 const sendEmail = async (data) => {
   try {
     console.log(data);
-    const res = await axios.post("http://localhost:4000/send_email_kitchen", data)
+    const res = await axios.post("https://test.teymax.com/api/mailer.php", data)
   } catch (error) {
     console.log(error)
   }
@@ -72,6 +72,7 @@ return (
             reset()
           })}
         >
+          <input {...register('product')} type='hidden' value="kitchen"/>
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
             <label className={active === "item_vilha" ? "material material_active" : "material "}>
@@ -80,23 +81,23 @@ return (
                 name="material"
               />
               <span className="material-name">ВІЛЬХА</span>
-              <span className="material-price">12000 ГРН/КВ.М</span>
+              <span className="material-price">12000 ГРН/ПГ.М.</span>
             </label>
             <label className={active === "item_dyb" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="Дуб-12000" className="material-radio" id="item_dyb"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ДУБ</span>
-              <span className="material-price">12000 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_yasen" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="Ясен-12000" className="material-radio" id="item_yasen"
+              <input {...register('material')} type="radio" value="Ясен-12000" className="material-radio" id="item_dyb"
                 onChange={HandleChangeMaterial}
                 name="material"
               />
               <span className="material-name">ЯСЕН</span>
-              <span className="material-price">12000 ГРН/КВ.М</span>
+              <span className="material-price">15000 ГРН/ПГ.М.</span>
+            </label>
+            <label className={active === "item_yasen" ? "material material_active" : "material "}>
+              <input {...register('material')} type="radio" value="Дуб-15000" className="material-radio" id="item_yasen"
+                onChange={HandleChangeMaterial}
+                name="material"
+              />
+              <span className="material-name">ДУБ</span>
+              <span className="material-price">18000 ГРН/ПГ.М.</span>
             </label>
             <label className={active === "item_array" ? "material material_active" : "material "}>
               <input {...register('material')} type="radio" value="Масив_дерева-12000" className="material-radio" id="item_array"
@@ -104,13 +105,13 @@ return (
                 name="material"
               />
               <span className="material-name">МАСИВ ДЕРЕВА</span>
-              <span className="material-price">12000 ГРН/КВ.М</span>
+              <span className="material-price">22000 ГРН/ПГ.М.</span>
             </label>
           </div>
           <p className="calc-calc_titles">КАЛЬКУЛЯТОР ВАРТОСТІ ТОВАРУ</p>
           <div className="area">
             <label className="area-title_block">
-              <p className="area-title">ПЛОЩА</p>
+              <p className="area-title">ДОВЖИНА</p>
             </label>
             <input {...register('area')} type="text" className="area-input" placeholder="_ _ _ _ _" id="area" name="area"
               onChange={HandleChangeArea}
@@ -122,7 +123,7 @@ return (
           {errors.area && errors.area.type === "required" && <span className="error-message">Будь ласка, вкажіть площу кухні <br/></span>}
           <label className="total-price">
             <span className="total-price-text">ЗАГ. ВАРТІСТЬ</span>
-            <span className="total-price-result">{totalPrice}<p className="total-price-currency">ГРН</p></span>
+            <span className="total-price-result">{totalPrice.toFixed(2)}<p className="total-price-currency">ГРН</p></span>
             <input {...register('total')} name="total" value={totalPrice} type="hidden" readOnly/>
           </label>
           <div className="contact-info">
