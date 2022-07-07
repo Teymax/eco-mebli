@@ -172,7 +172,10 @@
     }
 
     &-item {
-      height: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 460px !important;
+      width: 360px !important;
     }
   }
   

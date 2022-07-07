@@ -21,6 +21,9 @@ const KitchenCalc = () => {
     mobile: Yup.string()
         .required('Mobile is required')
         .matches(/^((38)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,10}$/, 'Mobile must be valid'),
+    email: Yup.string()
+      .required('Email is required')
+      .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'E-mail must be valid'),
   });
   
 const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
@@ -143,10 +146,19 @@ return (
             <div className="contact-info-block">
               <input type="text" className="contact-info-input" {...register('mobile')} name="mobile"/>
             </div>
+            <div className="contact-info-block">
+              <p className="contact-info-text">
+                ПОШТА
+              </p>
+            </div>
+            <div className="contact-info-block">
+              <input type="text" className="contact-info-input" {...register('email')} name="email"/>
+            </div>
           </div>
           {
             errors.mobile ||
-            errors.name ?
+            errors.name ||
+            errors.email ?
             <span className="error-message">Будь ласка, вкажіть дійсні данні <br/></span> : <></>
           }
           <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>

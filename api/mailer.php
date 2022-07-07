@@ -37,6 +37,11 @@ if(!$obj['mobile'] || !$obj['name']){
         <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Телефон</b></td>
         <td style='padding: 10px; border: #e9e9e9 1px solid;'>". $obj['mobile'] ."</td>
       </tr>
+
+      <tr>
+        <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Пошта</b></td>
+        <td style='padding: 10px; border: #e9e9e9 1px solid;'>". $obj['email'] ."</td>
+      </tr>
       
       <tr>
         <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Продукт</b></td>
@@ -81,6 +86,11 @@ if(!$obj['mobile'] || !$obj['name']){
         <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Телефон</b></td>
         <td style='padding: 10px; border: #e9e9e9 1px solid;'>". $obj['mobile'] ."</td>
       </tr>
+
+      <tr>
+        <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Пошта</b></td>
+        <td style='padding: 10px; border: #e9e9e9 1px solid;'>". $obj['email'] ."</td>
+      </tr>
       
       <tr>
         <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Продукт</b></td>
@@ -124,6 +134,11 @@ if(!$obj['mobile'] || !$obj['name']){
       <tr>
         <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Телефон</b></td>
         <td style='padding: 10px; border: #e9e9e9 1px solid;'>". $obj['mobile'] ."</td>
+      </tr>
+
+      <tr>
+        <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>Пошта</b></td>
+        <td style='padding: 10px; border: #e9e9e9 1px solid;'>". $obj['email'] ."</td>
       </tr>
       
       <tr>

@@ -37,7 +37,7 @@ const Contacts = () => {
       <div className="apperContainer"></div>
       <div className="container">
 
-        <p className="text title">контакти </p>
+        <p className="text title">зворотній<br className="space" /> зв'язок </p>
         <div className="gridBlock">
           <form className="contact-form"
           onSubmit={handleSubmit((data) => {
@@ -85,6 +85,7 @@ const Contacts = () => {
             </div>
           </form>
           <div>
+            <p className="text contacts">КОНТАКТИ</p>
             <p className="text email">hodakivskigmaks586@gmail.com</p>
             <p className="text tel">+38 (093) 182 62 35</p>
             <p className="text tel">+38 (098) 755 41 78</p>
