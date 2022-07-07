@@ -294,3 +294,12 @@
     letter-spacing: 0.05em;
     margin-left: 80px;
 }
+
+@media (max-width: $sm) {
+    .area {
+
+        &-title{
+            margin-left: 10px !important;
+        }
+    }
+}
