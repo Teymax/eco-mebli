@@ -287,7 +287,7 @@
   .slide {
     &_body {
 
-      margin: 83px 5px;
+      margin: 83px 0px;
 
       &-text {
         margin-top: 0px;
@@ -300,9 +300,13 @@
         }
         h2 {
           font-size: 95px;
+
+          span {
+            margin-left: 0.6em;
+          }
         }
         h4{
-          margin-right: -117px;
+          margin-right: -105px;
           margin-top: 25px;
           color: $secondTextColor;
          
@@ -319,7 +323,7 @@
       &-img{
         margin: -270px 00px 0px 0px !important;
         //width: 210px;
-        width: 54%;
+        width: 49%;
       }
       
     }
