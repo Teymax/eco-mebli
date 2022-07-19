@@ -79,11 +79,11 @@
   display: grid;
   width: 95%;
   margin: auto;
-  grid-column-gap: 5px;
+  grid-column-gap: 12px;
 
   &-top {
     grid-template-columns: 1fr 5fr 1fr;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
 
     .offers-item:nth-child(3){
       background-size: 203%;
@@ -110,7 +110,7 @@
 }
 //dealing with uneven height of pictures
 .offers-bottom .offers-item:nth-child(1){
-  background-size: 192%;
+  background-size: 202%;
 }
 
 .offers-bottom .offers-item:nth-child(1):hover{
@@ -220,7 +220,7 @@
           
          }
      .slide:nth-child(1) div{
-          background-size: 100% 185%;
+          //background-size: 100% 185%;
         }
   }
 
@@ -265,7 +265,7 @@
 
 .slide {
 
-  box-shadow: inset 0px -150px 50px -75px $darkColor;
+  //box-shadow: inset 0px -150px 50px -75px $darkColor;
 
 
   
@@ -476,6 +476,9 @@
     width: 100%;
   }
 }
+.slide:nth-child(1) div{
+  background-size: 100% 190%;
+}
 }
 
 @media (max-width: $xs) {
@@ -541,7 +544,7 @@
 
       &:nth-child(1):hover{
         transition: 0s ease-in-out;
-        background-size: 100% 175%; 
+        background-size: 100% 190%; 
       } 
       &:hover {
         transition: 0s ease-in-out;

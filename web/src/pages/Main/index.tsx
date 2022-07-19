@@ -90,7 +90,7 @@ const Main = () => {
                 src={item_2}
                 alt=""
                 className="slide_body-img"
-                style={{ margin: "0 40px -110px 0" }}
+               style={{ margin: "0 40px -110px 0" }}
               />
             </div>
           </div>

@@ -12,7 +12,7 @@ const Carousel = ({ children }: any) => {
       Children.map(children, (child) => {
         return cloneElement(child, {
           style: {
-            height: "100%",
+            //height: "100%",
             minWidth: `${SLIDE_WIDTH}vw`,
             maxWidth: `${SLIDE_WIDTH}vw`,
           },
