@@ -4,9 +4,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from "axios"
+import Select from "../../components/Select/Select";
 
 
 import item from "../../assets/calc_img/kitchen.jpg"
+
+const options:[string, number][] = [
+  ["ВІЛЬХА", 12000],
+  ["ЯСЕН", 15000],
+  ["ДУБ", 18000],
+  ["МАСИВ ДЕРЕВА", 22000]
+]
 
 const KitchenCalc = () => {
 
@@ -28,8 +36,8 @@ const KitchenCalc = () => {
   
 const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
 
-const [active, setActive] = useState("item_vilha")
-const [price, setPrice] = useState(12000)
+const [active, setActive] = useState(0)
+const [price, setPrice] = useState(options[0][1])
 const [area, setArea] = useState(0)
 const [totalPrice, setTotalPrice] = useState(0)
 
@@ -38,9 +46,9 @@ useEffect(() => {
     setValue('total', price * area)
   }, [price, area])
 
-const HandleChangeMaterial = (event) => {
-  setActive(event.target.id)
-  setPrice(event.target.value.split("-")[1])
+const HandleChangeMaterial = (a) => {
+  setActive(a)
+  setPrice(options[a][1])
 }
 
 const HandleChangeArea = (event) => {
@@ -68,7 +76,7 @@ return (
         <p className="calc-text">РОЗРАХУЄМО ВАРТІСТЬ ЗАМОВЛЕННЯ</p>
       </div>
       <div className="calc calc-items">
-        <form className="calc-calc_block"
+        <form className="calc-calc_block_kitchen"
           onSubmit={handleSubmit((data) => {
             sendEmail(data)
             setTotalPrice(0)
@@ -78,38 +86,13 @@ return (
           <input {...register('product')} type='hidden' value="kitchen"/>
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
-            <label className={active === "item_vilha" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="Вільха-12000" className="material-radio" id="item_vilha" defaultChecked
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ВІЛЬХА</span>
-              <span className="material-price">12000 ГРН/ПГ.М.</span>
-            </label>
-            <label className={active === "item_dyb" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="Ясен-12000" className="material-radio" id="item_dyb"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ЯСЕН</span>
-              <span className="material-price">15000 ГРН/ПГ.М.</span>
-            </label>
-            <label className={active === "item_yasen" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="Дуб-15000" className="material-radio" id="item_yasen"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ДУБ</span>
-              <span className="material-price">18000 ГРН/ПГ.М.</span>
-            </label>
-            <label className={active === "item_array" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="Масив_дерева-12000" className="material-radio" id="item_array"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">МАСИВ ДЕРЕВА</span>
-              <span className="material-price">22000 ГРН/ПГ.М.</span>
-            </label>
+            <Select options={
+              options
+            } 
+            value={
+              active
+            } 
+            onClick={(a) => {HandleChangeMaterial(a)}}/>
           </div>
           <p className="calc-calc_titles">КАЛЬКУЛЯТОР ВАРТОСТІ ТОВАРУ</p>
           <div className="area">
@@ -163,7 +146,7 @@ return (
           }
           <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
         </form>
-        <img src={item} alt="kitchen_img" className="calc-img" />
+        <img src={item} alt="kitchen_img" className="calc-img_kitchen" />
       </div>
     </div>
   </section>

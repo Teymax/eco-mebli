@@ -4,9 +4,18 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from "axios"
+import Select from "../../components/Select/Select";
 
 
 import item from "../../assets/calc_img/stairs.jpg"
+
+const options:[string, number][] = [
+  ["СОСНА", 10850],
+  ["ВІЛЬХА", 10850],
+  ["ЯСЕН", 15500],
+  ["ЯСЕН (ЩІЛІСНА)", 18600],
+  ["ДУБ (ЩІЛІСНА)", 24300],
+]
 
 const StairsCalc = () => {
 
@@ -31,8 +40,8 @@ const StairsCalc = () => {
   
 const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
 
-const [active, setActive] = useState("item_sosna")
-const [price, setPrice] = useState(10850)
+const [active, setActive] = useState(0)
+const [price, setPrice] = useState(options[0][1])
 const [length, setLength] = useState(0)
 const [width, setWidth] = useState(0)
 const [rise, setRise] = useState(0)
@@ -41,12 +50,12 @@ const [totalPrice, setTotalPrice] = useState(0)
 useEffect(() => {
   setTotalPrice(price * length * width / 10000)
   setValue('total', (price * length * width / 10000))
-  setValue('rise', (length * width) / 10000)
+  setValue('rise', ((length * width) / 10000).toFixed(2))
   }, [price, length, width])
 
-const HandleChangeMaterial = (event) => {
-  setActive(event.target.id)
-  setPrice(event.target.value.split("-")[1])
+const HandleChangeMaterial = (a) => {
+  setActive(a)
+  setPrice(options[a][1])
 }
 
 const HandleChangeLength = (event) => {
@@ -78,7 +87,7 @@ return (
         <p className="calc-text">РОЗРАХУЄМО ВАРТІСТЬ ЗАМОВЛЕННЯ</p>
       </div>
       <div className="calc calc-items">
-        <form className="calc-calc_block"
+        <form className="calc-calc_block_stairs"
           onSubmit={handleSubmit((data) => {
             sendEmail(data)
             setTotalPrice(0)
@@ -88,54 +97,13 @@ return (
           <input {...register('product')} type='hidden' value="stairs"/>
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
-            <label className={active === "item_sosna" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="sosna-10850" className="material-radio" id="item_sosna" defaultChecked
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">СОСНА</span>
-              <span className="material-price">10850 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_vilha" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="vilha-10850" className="material-radio" id="item_vilha"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ВІЛЬХА</span>
-              <span className="material-price">10850 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_yasen" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="yasen-15500" className="material-radio" id="item_yasen"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ЯСЕН</span>
-              <span className="material-price">15500 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_dyb" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="dyb-20150" className="material-radio" id="item_dyb"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ДУБ</span>
-              <span className="material-price">20150 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_yasen_extra" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="yasen_extra-18600" className="material-radio" id="item_yasen_extra"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ЯСЕН (ЩІЛЬНА)</span>
-              <span className="material-price">18600 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_dyb_extra" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="dyb_extra-24300" className="material-radio" id="item_dyb_extra"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ДУБ (ЩІЛЬНА)</span>
-              <span className="material-price">24300 ГРН/КВ.М</span>
-            </label>
+          <Select options={
+              options
+            } 
+            value={
+              active
+            } 
+            onClick={(a) => {HandleChangeMaterial(a)}}/>
           </div>
           <p className="calc-calc_titles">КАЛЬКУЛЯТОР ВАРТОСТІ ТОВАРУ</p>
           <div className="area">
@@ -213,7 +181,7 @@ return (
           }
           <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
         </form>
-        <img src={item} alt="kitchen_img" className="calc-img" />
+        <img src={item} alt="kitchen_img" className="calc-img_stairs" />
       </div>
     </div>
   </section>
