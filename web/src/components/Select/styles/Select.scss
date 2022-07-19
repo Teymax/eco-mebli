@@ -1,0 +1,98 @@
+@import "../../../styles/palette.scss";
+
+.select {
+  margin: 0 80px 0 80px;
+  position: relative;
+  flex: 1;
+
+  .arrow {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-top: -21px;
+
+    &-open{
+      transform: rotate(45deg);
+    }
+  }
+
+  
+  
+  .mainContainer {
+    position: relative;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 2px dotted #ffffff80;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-transform: capitalize;
+    background: $secondMainTextColor;
+  }
+
+  .optionsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: none;
+    background: $unhoveredColor;
+    backdrop-filter: blur(40px);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    text-transform: capitalize;
+
+    .option {
+      width: 100%;
+      transition: 0.3s opacity, 0.3s background;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      margin: 10px 0;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .choosedOption {
+      opacity: 1;
+    }
+  }
+}
+
+.material{
+  background-color: $unhoveredColor;
+  font-family: $primaryFont;
+  font-weight: 600;
+
+  &-name {
+      margin-left: 26px;
+      font-size: 18px;
+      line-height: 21px;
+      letter-spacing: 0.05em;
+      color: $darkColor;
+  }
+
+  &-price {
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: 0.05em;
+      color: $darkColor;
+      margin-left: auto;
+      margin-right: 60px;
+  }
+}

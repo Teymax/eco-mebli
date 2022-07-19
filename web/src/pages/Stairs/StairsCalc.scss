@@ -1,7 +1,7 @@
 @import "../../styles/palette.scss";
 
 .wrapper-stairs{
-    margin-bottom: 600px;
+    margin-bottom: 500px;
 }
 
 .header {
@@ -53,7 +53,7 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    &-calc_block {
+    &-calc_block_stairs {
         margin-top: 50px;
         height: auto;
         background: rgba(201, 173, 152, 0.05);
@@ -67,79 +67,18 @@
         margin: 20px 84px 26px 0;
     }
 
-    &-img {
+    &-img_stairs {
         margin-top: 50px;
-        height: 960px;
+        height: 789px;
+        max-width: 644px;
+        width: 100%;
     }
 }
 
-.material{
-    display: flex;
-    margin: 0 80px 0 80px;
-    height: 56px;
-    background-color: $unhoveredColor;
-    align-items: center;
-    font-family: $primaryFont;
-    font-weight: 600;
-
-    &-radio {
-        visibility: hidden;
-        
-        &:hover {
-            visibility: visible;
-            margin: 0 0 0 26px;
-            appearance: none;
-            border: 2.5px solid $darkColor;
-            border-radius: 50%;
-            background-clip: content-box;
-            padding: 2px;
-            height: 18px;
-            width: 18px;
-        }
-
-        &:checked {
-            visibility: visible;
-            margin: 0 0 0 26px;
-            appearance: none;
-            border: 2.5px solid $darkColor;
-            background-color: $darkColor;
-            border-radius: 50%;
-            background-clip: content-box;
-            padding: 2px;
-            height: 18px;
-            width: 18px;
-        }
-    }
-
-    &-name {
-        margin-left: 26px;
-        font-size: 18px;
-        line-height: 21px;
-        letter-spacing: 0.05em;
-        color: $darkColor;
-    }
-
-    &-price {
-        font-size: 24px;
-        line-height: 28px;
-        letter-spacing: 0.05em;
-        color: $darkColor;
-        margin-left: auto;
-        margin-right: 30px;
-    }
-
-    
-    &:hover {
-    background-color: $secondMainTextColor;
-    }
-}
-
-.material_active {
-    background-color: $secondMainTextColor;
-}
 
 .area {
     display: grid;
+    margin-top: 5px !important;
     grid-template-columns: 3fr 3fr 1fr;
     height: 56px;
     margin: 0 80px 0 80px;
@@ -298,27 +237,32 @@
 
 @media (max-width: $lg) {
     .wrapper-stairs{
-      margin-bottom: 600px;
+      margin-bottom: 500px;
     }
-
+    .calc {
+    
+        &-img_stairs {
+            display: none;
+        }
+    }
   }
   
   @media (max-width: $md) {
     .wrapper-stairs{
-      margin-bottom: 640px;
+      margin-bottom: 440px;
     }
 
   }   
   
   @media (max-width: $sm) {
     .wrapper-stairs{
-        margin-bottom: 600px;
+        margin-bottom: 400px;
       }
   }
   
   @media (max-width: $xs) {
     .wrapper-stairs{
-        margin-bottom: 700px;
+        margin-bottom: 500px;
       }
     
   }
