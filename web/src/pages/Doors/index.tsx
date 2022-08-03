@@ -4,9 +4,16 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from "axios"
-
+import Select from "../../components/Select/Select";
 
 import item from "../../assets/calc_img/door.jpg"
+
+const options:[string, number][] = [
+  ["ВІЛЬХА", 15000],
+  ["СОСНА", 15000],
+  ["ЯСЕН", 18000],
+  ["ДУБ", 22000]
+]
 
 const DoorsCalc = () => {
 
@@ -31,8 +38,8 @@ const validationSchema = Yup.object().shape({
 
 const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
 
-const [active, setActive] = useState("item_vilha")
-const [price, setPrice] = useState(15000)
+const [active, setActive] = useState(0)
+const [price, setPrice] = useState(options[0][1])
 const [length, setLength] = useState(0)
 const [width, setWidth] = useState(0)
 const [area, setArea] = useState(0)
@@ -45,9 +52,9 @@ useEffect(() => {
   setValue('total', (price * length * width / 10000))
 }, [length, width, price])
 
-const HandleChangeMaterial = (event) => {
-  setActive(event.target.id)
-  setPrice(event.target.value.split("-")[1])
+const HandleChangeMaterial = (a) => {
+  setActive(a)
+  setPrice(options[a][1])
 }
 
 const HandleChangeLength = (event) => {
@@ -79,7 +86,7 @@ return (
         <p className="calc-text">РОЗРАХУЄМО ВАРТІСТЬ ЗАМОВЛЕННЯ</p>
       </div>
       <div className="calc calc-items">
-        <form className="calc-calc_block"
+        <form className="calc-calc_block_door"
           onSubmit={handleSubmit((data) => {
             sendEmail(data)
             setTotalPrice(0)
@@ -89,38 +96,13 @@ return (
           <input {...register('product')} type='hidden' value="doors"/>
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
-          <label className={active === "item_vilha" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="vilha-15000" className="material-radio" id="item_vilha" defaultChecked
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ВІЛЬХА</span>
-              <span className="material-price">15000 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_sosna" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="sosna-15000" className="material-radio" id="item_sosna"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">СОСНА</span>
-              <span className="material-price">15000 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_yasen" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="yasen-18000" className="material-radio" id="item_yasen"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ЯСЕН</span>
-              <span className="material-price">18000 ГРН/КВ.М</span>
-            </label>
-            <label className={active === "item_dyb" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="dyb-22000" className="material-radio" id="item_dyb"
-                onChange={HandleChangeMaterial}
-                name="material"
-              />
-              <span className="material-name">ДУБ</span>
-              <span className="material-price">22000 ГРН/КВ.М</span>
-            </label>
+          <Select options={
+              options
+            } 
+            value={
+              active
+            } 
+            onClick={(a) => {HandleChangeMaterial(a)}}/>
           </div>
           <p className="calc-calc_titles">КАЛЬКУЛЯТОР ВАРТОСТІ ТОВАРУ</p>
           <div className="area">
@@ -198,7 +180,7 @@ return (
           }
           <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
         </form>
-        <img src={item} alt="kitchen_img" className="calc-img" />
+        <img src={item} alt="kitchen_img" className="calc-img_door" />
       </div>
     </div>
   </section>
