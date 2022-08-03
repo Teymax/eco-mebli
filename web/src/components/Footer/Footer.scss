@@ -1,8 +1,21 @@
+@import "../../styles/palette.scss";
+
 .footer {
     background-image: url("../../assets/catalog_menu/background-2.png");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     position: absolute;
-    height: 100px;
+    height: 150px;
     width: 100%;
+
+    .footer_text::before{
+        content: "\00A9";
+    }
+
+    .footer_text{
+        padding-top: 90px;
+        padding-left: 10%;
+        font-family: $primaryFont;
+        font-weight: 600;
+    }
 }
