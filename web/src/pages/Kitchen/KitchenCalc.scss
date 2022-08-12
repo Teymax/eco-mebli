@@ -68,9 +68,15 @@
     }
 
     &-img_kitchen {
-        margin-top: 50px;
         height: 666px;
         max-width: 767px;
+        width: 100%;
+    }
+
+    &-img_kitchen_block {
+        margin-top: 35px;
+        height: 666px;
+        max-width: 667px;
         width: 100%;
     }
 }
