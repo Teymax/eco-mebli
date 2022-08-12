@@ -112,6 +112,22 @@
         }   
     }
     }
+
+    @media (max-width: $sm){
+
+        .apper_container-title{
+            width: 260px;
+        }
+
+        .options-option:nth-child(3):hover{
+            background-size: 100%  100%;
+        }
+
+        .options-option:hover{
+            background-size: 100%;
+        }
+    }
+
     @media (max-width: $xs){
 
         
