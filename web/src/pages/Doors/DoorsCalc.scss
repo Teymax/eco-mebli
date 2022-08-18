@@ -68,8 +68,14 @@
     }
 
     &-img_door {
-        margin-top: 50px;
-        height: 789px;
+        height: 770px;
+        max-width: 644px;
+        width: 100%;
+    }
+
+    &-img_door_block {
+        margin-top: 35px;
+        height: 770px;
         max-width: 644px;
         width: 100%;
     }

@@ -5,9 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from "axios"
 import Select from "../../components/Select/Select";
+import { Fade } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
-
-import item from "../../assets/calc_img/stairs.jpg"
 
 const options:[string, number][] = [
   ["СОСНА", 10850],
@@ -16,6 +16,12 @@ const options:[string, number][] = [
   ["ЯСЕН (ЩІЛІСНА)", 18600],
   ["ДУБ (ЩІЛІСНА)", 24300],
 ]
+
+const fadeImages = [
+  "/assets/photos/stairs/IMG_8556.jpg",
+  "/assets/photos/stairs/IMG_8634.jpg",
+  "/assets/photos/stairs/IMG_8685.jpg"
+];
 
 const StairsCalc = () => {
 
@@ -181,7 +187,19 @@ return (
           }
           <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
         </form>
-        <img src={item} alt="kitchen_img" className="calc-img_stairs" />
+        <div className="slide-container">
+            <Fade cssClass="calc-img_stairs_block">
+              <div className="each-fade">
+                <img src={fadeImages[0]} className="calc-img_stairs" />
+              </div>
+              <div className="each-fade">
+                <img src={fadeImages[1]} className="calc-img_stairs" />
+              </div>
+              <div className="each-fade">
+                <img src={fadeImages[2]} className="calc-img_stairs" />
+              </div>
+            </Fade>
+          </div>
       </div>
     </div>
   </section>

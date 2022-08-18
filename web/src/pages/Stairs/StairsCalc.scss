@@ -68,9 +68,15 @@
     }
 
     &-img_stairs {
-        margin-top: 50px;
-        height: 789px;
-        max-width: 644px;
+        height: 769px;
+        max-width: 604px;
+        width: 100%;
+    }
+
+    &-img_stairs_block {
+        margin-top: 35px;
+        height: 769px;
+        max-width: 604px;
         width: 100%;
     }
 }
