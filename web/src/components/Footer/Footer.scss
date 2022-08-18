@@ -1,8 +1,41 @@
+@import "../../styles/palette.scss";
+
 .footer {
     background-image: url("../../assets/catalog_menu/background-2.png");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     position: absolute;
-    height: 100px;
+    height: 150px;
     width: 100%;
+
+    .footer_text::before{
+        content: "\00A9 2022 екомеблі, всі права захищені";
+    }
+
+    .footer_text{
+        padding-top: 90px;
+        //padding-left: 10%;
+        font-family: $primaryFont;
+        font-weight: 600;
+        width: 85%;
+        margin: 0 auto;
+    }
+
+  
+    
+}
+@media (max-width: $sm){
+    .footer .footer_text{
+        width: 70%;
+        margin: auto;
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: $xs){
+    .footer .footer_text{
+        text-align: center;
+        width: 88%;
+    }
 }
