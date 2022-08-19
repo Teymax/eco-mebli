@@ -1,31 +1,53 @@
 [
     {
-      "image": "/assets/works_images/kitchen.png",
-      "title": "кухні"
+      "image": "/assets/photos/bath/IMG_8286.jpg",
+      "title":"ванна",
+      "to": "bath"
     },
     {
-      "image": "/assets/works_images/bathroom.jpg",
-      "title": "шухлядки"
+      "image": "/assets/photos/doors/IMG_8266.jpg",
+      "title":"двері",
+      "to": "doors"
     },
     {
-      "image": "/assets/works_images/3.jpg",
-      "title": "шухлядки"
+      "image": "/assets/photos/armchairs/IMG_8548.jpg",
+      "title":"крісла",
+      "to": "armchairs"
     },
     {
-      "image": "/assets/works_images/tables.jpg",
-      "title": "столи"
+      "image": "/assets/photos/kitchens/IMG_8299.jpg",
+      "title":"кухні",
+      "to": "kitchens"
     },
     {
-      "image": "/assets/works_images/stairs.jpg",
-      "title": "сходи"
+      "image": "/assets/photos/stairs/IMG_8557.jpg",
+      "title":"сходи",
+      "to": "stairs"
     },
     {
-      "image": "/assets/works_images/light.jpg",
-      "title": "світло"
+      "image": "/assets/photos/light/IMG_8607.jpg",
+      "title":"рамки",
+      "to": "light"
     },
     {
-      "image": "/assets/works_images/doors.jpg",
-      "title": "двері"
+      "image": "/assets/photos/shelves/IMG_8542.jpg",
+      "title":"полиці",
+      "to": "shelves"
+    },
+    {
+      "image": "/assets/photos/bedroom/IMG_8615.jpg",
+      "title":"спальня",
+      "to": "bedroom"
+    },
+    {
+      "image": "/assets/photos/tables/IMG_8527.jpg",
+      "title":"столи",
+      "to": "tables"
+    },
+    {
+      "image": "/assets/photos/cabinets/IMG_8313.jpg",
+      "title":"тумби",
+      "to": "cabinets"
     }
   ]
 

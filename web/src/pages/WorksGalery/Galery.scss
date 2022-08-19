@@ -1,3 +1,4 @@
+
 @import "../../styles/palette.scss";
 .backgroundImg{
     background-image: url("../../../public/assets/works_images/apper_background.png");
@@ -11,7 +12,10 @@
 
     &-offer{
       //max-width: 1480px;
-      width: 95%;
+
+     // width: 95%;
+     width: 80%;
+
       height: 28px;
       font-family: $primaryFont;
       font-style: normal;
@@ -23,7 +27,7 @@
 
       margin: auto;
       @media (max-width: $xl) {
-        max-width: 1170px;
+        //max-width: 1170px;
       }
     
       @media (max-width: $lg) {
@@ -35,7 +39,6 @@
       
     &-text {
       height: 64px;
-      width: auto;
       display: block;
       font-family: $primaryFont;
       font-size: 64px;
@@ -49,6 +52,7 @@
       &_bottom{
         max-width: 1480px;
         display: flex;
+        padding-top: 24px;
         flex-direction: row;
         font-weight: 600;
         font-size: 24px;
@@ -57,6 +61,7 @@
         text-transform: uppercase;
         background-color: transparent;
         margin-top: 25px;
+       
       }
 
       &_button{
@@ -77,7 +82,10 @@
 .offers{
   height: 307px;
   display: grid;
-  width: 95%;
+
+ width: 80%;
+
+
   margin: auto;
   grid-column-gap: 12px;
 
@@ -86,35 +94,50 @@
     margin-bottom: 12px;
 
     .offers-item:nth-child(3){
-      background-size: 203%;
+
+      background-size: 155% 100% ;
+    }
+
+    .offers-item:nth-child(3):hover{
+      background-size: 175% 120% ;
+
     }
   }
 
   &-bottom {
     grid-template-columns: 2fr 7fr 2fr;
-    margin-bottom: 191px;
+    margin-bottom: 140px;
   }
 
   &-item  {
     background: no-repeat center center;
-    background-size: 120% 100% ;
+    background-size: 100% 100%;
     overflow: hidden;
-    height: 100% ;
     transition: 0.6s ease-in-out;
 
     &:hover {
       transition: 0.6s ease-in-out;
-      background-size: 140%  120%; 
+      background-size: 120%  120%; 
     }
   }
 }
-//dealing with uneven height of pictures
+// //dealing with uneven height of pictures
+.offers-top .offers-item:nth-child(1){
+  background-size:170% 100%;
+}
+
+.offers-top .offers-item:nth-child(1):hover{
+  background-size: 170% 120%;
+}
+
 .offers-bottom .offers-item:nth-child(1){
-  background-size: 202%;
+
+  background-size: 140% 100%;
+
 }
 
 .offers-bottom .offers-item:nth-child(1):hover{
-  background-size: 200%;
+  background-size: 170% 120%;
 }
 
 .offers-item:nth-child(2){
@@ -148,7 +171,9 @@
 
   &-container{
    // max-width: 1480px;
-    width: 85%;
+
+    width: 80%;
+
     height: 100%;
     top: 50%;
     @media (max-width: $xl) {
@@ -166,7 +191,7 @@
     align-items: center;
     flex-direction: row; /////////////
     padding-top: 350px;  /////////////// becouse background 350px
-   /// height: 619px; breaks modal icon when mob version
+
   }
 
   &-title{
@@ -201,7 +226,7 @@
       width: 100%;
     }
   }
-
+  
   &-all-slides {
     height: 620px;
     display: flex;
@@ -209,7 +234,10 @@
     @media (max-width: $sm){
      height: 505px;
     }
-  
+
+
+
+
 
     .slide div {
       background: no-repeat center center;
@@ -219,9 +247,28 @@
       height: 100%;
           
          }
-     .slide:nth-child(1) div{
-          //background-size: 100% 185%;
-        }
+ 
+  }
+
+  &-all-slides-3{
+
+    height: 310px;
+    display: flex;
+    transition: 1.6s cubic-bezier(0.33, 0.11, 0.5, 1.03);
+    @media (max-width: $sm){
+      height: 252px;
+     }
+
+
+    .slide div {
+      background: no-repeat center center;
+      background-size: cover ;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+          
+         }
+
   }
 
  
@@ -262,14 +309,6 @@
 
   
 }
-
-.slide {
-
-  //box-shadow: inset 0px -150px 50px -75px $darkColor;
-
-
-  
-    }
 
 
 
@@ -359,12 +398,27 @@
   
     &-bottom {
       grid-template-columns: 1fr 3fr 1fr;
+
+
+      .offers-item{
+        background-size: 165%  100%;
+      }
+
     }
   }
 
   .offers-item{
-    background-size: 175% ;
+
+    background-size: 175%  100%;
     height: 100% ;
+  }
+
+  .offers-item:nth-child(2){
+    background-size: 120% ;
+    
+  }
+
+
   }
 
   .offers-item:hover{
@@ -372,7 +426,9 @@
   }
 
   .offers-bottom .offers-item:nth-child(1){
-    background-size: 282%;
+
+    background-size: 192% 100%;// 282% 100%
+
   }
 
   .offers-bottom .offers-item:nth-child(1):hover{
@@ -384,7 +440,7 @@
   }
 
   .slider-window{
-    //width: 65%;
+
   }
   .arrow {
     &-l {
@@ -395,7 +451,7 @@
       right: 8%;
     }
   }
-}
+
 
 @media (max-width: $md){
 
@@ -412,6 +468,9 @@
     &_bottom{
       width: 100%;
       margin: auto;
+
+      padding-top: 0;
+
       flex-direction: column;
       justify-content: center;
       row-gap: 35px;
@@ -424,44 +483,35 @@
     }
 }
 
+
+
+.offers-bottom .offers-item:nth-child(1){
+  background-size: cover;
+}
+
+.offers-top .offers-item:nth-child(1){
+  background-size: cover ;
+}
+
 .offers{
 
   height: 250px;
-  &-top{
-
-    .offers-item:nth-child(3){
-      background-size: 260% 100%;
-    }
-    
+  .offers-item{
+    background-size: cover;
   }
 
-  &-bottom{
-
-    .offers-item:nth-child(1){
-      background-size: 300% 100%;
-    }
-    
-  }
-
-  &-item{
-    background-size: 144% 100%;  ///233% 100%
-    
-  }
-  
-  &-item:nth-child(2){
-    background-size: 100% 100%;
-  }
-
-  &-item:nth-child(3){
-    background-size: 260% 100%;
-  }
-  
 }
+
+
+
 .slider{
 
   &-title{
    margin: auto;
    position: inherit;
+
+   width: 100%;
+   text-align: center;
   }
 
   &-content{
@@ -479,7 +529,7 @@
 .slide:nth-child(1) div{
   background-size: 100% 190%;
 }
-}
+
 
 @media (max-width: $xs) {
   .backgroundImg-offer {
@@ -498,6 +548,7 @@
     &_bottom p{
       font-size: 18px;
       margin: auto;
+      text-align: center;
     }
     
     &_button{
@@ -510,7 +561,6 @@
   
   .offers{
     height: auto;
-    //width: 320px;
     width: 85%;
     row-gap: 50px;
     margin: auto;
@@ -522,7 +572,10 @@
 
 
       .offers-item:nth-child(3){
-        background-size:  100% 145%;
+
+        //background-size:  100% 145%;
+        background-size: cover;
+
       }
       
     }
@@ -533,14 +586,16 @@
       grid-template-columns: 1fr;
 
       .offers-item:nth-child(1){
-        background-size: 100% 100%;
+        background-size: cover;
+
       }
       
     }
   
     &-item{
       height: 300px;
-      background-size: 100% 190% ;
+      background-size: cover!important;
+
 
       &:nth-child(1):hover{
         transition: 0s ease-in-out;
@@ -553,11 +608,12 @@
     }
     
     &-item:nth-child(2){
-      background-size: 100% 100% ;
+      background-size: cover;
     }
   
     &-item:nth-child(3){
-      background-size: 100% 100%;
+      background-size: cover;
+
     }
   }
 
@@ -569,7 +625,6 @@
       margin: auto;
       left: 0;
       right: 0;
-      //margin-left: 25%;
     }
     &-wrapper{
       position: fixed;
@@ -577,11 +632,13 @@
     }
 
     &-window{
-      //width: 320px;
       margin-top: 0px;
-      //height: 300px;
     }
     &-all-slides{
+      height: 300px;
+    }
+
+    &-all-slides-3{
       height: 300px;
     }
 
@@ -602,3 +659,210 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "../../styles/palette.scss";
+
+.apper_container{
+    background-image: url('../../../public/assets/works_images/apper_background.png');
+    width: 100%;
+    //background-size: 100%;
+    height: 350px;
+    overflow: hidden;
+    filter: blur(80px);
+    z-index: -1;
+    position: absolute;
+  
+    &-title{
+        //width: 262px;
+        width: 80%;//
+        height: 64px;
+        //padding: 178px 0 159px 180px;
+        padding-top: 178px;//
+        padding-bottom: 159px;//
+        font-family: $primaryFont;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 64px;
+        line-height: 100.4%;
+        z-index: 1;
+        //text-align: center;
+        text-align: start; //
+        margin: auto; //
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        background-color: transparent;
+        color: $mainTextColor;
+    }
+
+}
+
+.options{
+    &_grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+        grid-template-rows: repeat(4, 1fr);
+        column-gap: 10px;
+        row-gap: 10px;
+        width: 80%;
+        //width: 100%;
+        height: auto;
+        margin-top: 401px;
+        margin: 0 auto;
+        
+    }
+   
+    &-option{
+        background-repeat: no-repeat;
+        height: 340px;
+        background-position: center center;
+        background-size: 100% ;
+        overflow: hidden;
+        transition: 0.6s ease-in-out;
+
+        &:first-child{
+            grid-column-start: 1;
+            grid-column-end: span 2;
+        }
+
+        &:last-child{
+            grid-column-start: 1;
+            grid-column-end: span 2;
+        }
+        
+        &:nth-child(3){
+            background-size: 110% ;
+        }
+
+        &_header{
+            display: flex;
+            flex-direction: column;
+            margin-top: 0;
+            margin-left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: $mainTextColor;
+            color: $darkColor;
+            align-content: center;
+            text-align: center;
+            transition: 0.6s ease-in-out;
+
+            &-title {
+                font-size: 24px;
+                text-transform: uppercase;
+                text-align: center;
+                margin-top: 25px;
+                transition: 0.6s ease-in-out;
+              }
+        }
+
+        &:hover{
+            transition: 0.6s ease-in-out;
+            background-size: 120%  ;
+        
+            .options-option_header{
+                height: 40px;
+                //padding: 5px 0;
+                background-color: $secondColor;
+                color: $darkColor;
+                transition: 0.6s ease-in-out;
+            }
+        
+            .options-option_header-title {
+                margin-top: 10px;
+                font-size: 24px;
+                text-transform: uppercase;
+                text-align: center;
+                transition: 0.6s ease-in-out;
+                width: 100%;
+            }
+        }   
+    }
+    }
+
+  
+
+    @media (max-width: $xl){
+        .options-option:nth-child(4), .options-option:nth-child(7),.options-option:nth-child(8),.options-option:nth-child(9){
+            background-size: 120%  100%;
+        }
+    }
+    @media (max-width: $md){
+      .options-option{
+        background-size: cover;
+
+        .options-option:hover{
+          background-size: cover;
+        }
+    }
+
+    .options-option:nth-child(3),.options-option:nth-child(4), .options-option:nth-child(7),.options-option:nth-child(8),.options-option:nth-child(9){
+      background-size: cover;
+  }
+    }
+    @media (max-width: $sm){
+
+        .options_grid{
+            row-gap: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+        }
+        .options-option{
+            background-size: cover;
+        }
+
+        .options-option:nth-child(3),.options-option:nth-child(4), .options-option:nth-child(7),.options-option:nth-child(8),.options-option:nth-child(9){
+            background-size: cover;
+        }
+        .apper_container-title{
+            width: 260px;
+        }
+    }
+
+    @media (max-width: $xs){
+
+        
+        .apper_container-title{
+            margin: auto;
+            padding: 130px 0 100px 0;
+        }
+        .options_grid{
+            // grid-template-columns: 1fr;
+             row-gap: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 88%;
+        }
+        .options-option{
+            background-size: cover;
+        }
+
+        .options-option:first-child {
+            grid-column-start: 1;
+            grid-column-end: 2;
+                
+        }
+       
+        .backgroundImg-offer_button{
+            margin-left: 0;
+            padding: 10px 0;
+        }
+      
+    }
+
+  }

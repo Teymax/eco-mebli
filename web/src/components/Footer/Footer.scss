@@ -9,13 +9,34 @@
     width: 100%;
 
     .footer_text::before{
-        content: "\00A9";
+
+        content: "\00A9 2022 екомеблі, всі права захищені";
+
     }
 
     .footer_text{
         padding-top: 90px;
-        padding-left: 10%;
         font-family: $primaryFont;
         font-weight: 600;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+  
+    
+}
+@media (max-width: $sm){
+    .footer .footer_text{
+        width: 70%;
+        margin: auto;
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: $xs){
+    .footer .footer_text{
+        text-align: center;
+        width: 88%;
     }
 }

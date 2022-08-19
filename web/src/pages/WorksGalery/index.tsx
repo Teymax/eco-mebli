@@ -1,8 +1,7 @@
 import "./Galery.scss";
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import kitchen_images from "../Works/kitchen_images.json";
-
+import { useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
+import imagesJson from "../Works/imagesJson.json";
 import Slider from "./Slider";
 const Galery = () => {
   const location = useLocation();
@@ -13,8 +12,44 @@ const Galery = () => {
     setIndexForSlider(index);
     setActive(true);
   };
+
+  const {title} = useParams()
+  let res;
+  switch (title) {
+    case "bath":
+      res = imagesJson.bath;
+      break;
+    case "doors":
+      res = imagesJson.doors;
+      break;
+    case "armchairs":
+      res = imagesJson.armchairs;
+      break;
+    case "kitchens":
+      res = imagesJson.kitchens;
+      break;
+    case "stairs":
+      res = imagesJson.stairs;
+      break;
+    case "light":
+      res = imagesJson.light;
+      break;
+    case "shelves":
+      res = imagesJson.shelves;
+      break;
+    case "bedroom":
+      res = imagesJson.bedroom;
+      break;
+    case "tables":
+      res = imagesJson.tables;
+      break;
+    case "cabinets":
+      res = imagesJson.cabinets;
+      break;
+  }
   return (
     <section>
+      {console.log(res)}
       <div className="backgroundImg">
         <div className="backgroundImg-offer">
           <h2 className="backgroundImg-offer-text">{data.title}</h2>
@@ -27,25 +62,27 @@ const Galery = () => {
         </div>
       </div>
       <div className="container" style={{ height: "100%" }}>
-        <div className="offers offers-top">
-          {kitchen_images.map(
-            (image, index) =>
-              index <= kitchen_images.length - 4 && (
-                <div
-                  key={index}
-                  className="offers-item"
-                  style={{
-                    backgroundImage: `url(${image.image})`,
-                  }}
-                  onClick={() => sliderShower(index)}
-                ></div>
-              )
-          )}
-        </div>
+        {res.length > 3 && (
+          <div className="offers offers-top">
+            {res.map(
+              (image, index) =>
+                index <= res.length - 4 && (
+                  <div
+                    key={index}
+                    className="offers-item"
+                    style={{
+                      backgroundImage: `url(${image.image})`,
+                    }}
+                    onClick={() => sliderShower(index)}
+                  ></div>
+                )
+            )}
+          </div>
+        )}
         <div className="offers offers-bottom">
-          {kitchen_images.map(
+          {res.map(
             (image, index) =>
-              index > kitchen_images.length - 4 && (
+              index > res.length - 4 && (
                 <div
                   key={index}
                   className="offers-item"
@@ -65,12 +102,11 @@ const Galery = () => {
         setActive={setActive}
         title={data.title}
       >
-        {kitchen_images.map((imag, index) => (
+        {res.map((imag, index) => (
           <div className="slide" key={index}>
-            <div style={{backgroundImage:`url(${imag.image})`}}>
 
-</div>
-            
+            <div style={{ backgroundImage: `url(${imag.image})` }}></div>
+
           </div>
         ))}
       </Slider>
