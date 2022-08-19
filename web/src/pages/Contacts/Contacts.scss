@@ -1,5 +1,9 @@
 @import "../../styles/palette.scss";
 
+.wrapperContacts {
+    margin-bottom: 250px;
+}
+
 .apperContainer{
     background-image: url("../../../public/assets/works_images/apper_background.png");
     padding-top: 30px;
@@ -28,6 +32,11 @@
     z-index: 2;
 }
 
+.gridBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .title{
     font-size: 64px;
     padding-top: 178px;
@@ -39,11 +48,11 @@
 }
 .email{
     font-size: 24px;
-    padding-top: 104px;
+    padding-top: 150px;
 }
 .media-title{
     font-size: 36px;
-    padding-top: 75px;
+    padding-top: 45px;
 }
 
 .icons{  
@@ -58,4 +67,229 @@
     padding-right: 33px;
 }
 
+.contact-info-page {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    margin: 150px 80px 0 0px;
+    font-family: $primaryFont;
+    font-weight: 600;
+
+    &-block {
+        height: 56px;
+        border: 1px solid $mainTextColor;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-text {
+        font-size: 18px;
+        line-height: 21px;
+        letter-spacing: 0.05em;
+        color: $mainTextColor;
+    }
+
+    &-input {
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        border: none;
+        text-align: center;
+        font-size: 20px;
+        line-height: 21px;
+        letter-spacing: 0.05em;
+    }
+
+}
+
+.description{
+    padding-top: 20px;
+    margin-left: -26px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: $mainTextColor;
+}
+
+.submit-button-contacts{
+    display: inline-block;
+    margin: 20px 0 20px 0;
+    width: 295px;
+    height: 56px;
+    background-color: $secondMainTextColor;
+    border: none;
+    color: $darkColor;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+
+.error-message-contacts{
+    color: $errorMessage;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    margin-left: -20px;
+    padding-top: 20px;
+}
+
+.gridMessages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: $xl) {
+    .wrapperContacts {
+        margin-bottom: 200px;
+    }
+
+    .description{
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .submit-button-contacts{
+        width: 245px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .error-message-contacts{
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: $lg) {
+    .wrapperContacts {
+        margin-bottom: 150px;
+    }
+
+    .description{
+        font-size: 10px;
+        line-height: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .submit-button-contacts{
+        width: 185px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .error-message-contacts{
+        font-size: 10px;
+        line-height: 10px;
+        margin-left: -25px;
+    }
+}
+
+@media (max-width: $md) {
+    .wrapperContacts {
+        margin-bottom: 120px;
+    }
+
+    .description{
+        font-size: 10px;
+        line-height: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .submit-button-contacts{
+        width: 155px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .error-message-contacts{
+        font-size: 10px;
+        line-height: 10px;
+        margin-left: -25px;
+    }
+}
+
+@media (max-width: $sm) {
+    .gridBlock {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .email{
+        font-size: 24px;
+        padding-top: 20px;
+    }
+
+    .wrapperContacts {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+
+    .description{
+        font-size: 10px;
+        line-height: 10px;
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+    
+    .submit-button-contacts{
+        width: 295px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .error-message-contacts{
+        font-size: 10px;
+        line-height: 10px;
+        margin-left: 25px;
+    }
+}
+
+@media (max-width: $xs) {
+    .gridBlock {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .email{
+        font-size: 24px;
+        padding-top: 20px;
+    }
+
+    .wrapperContacts {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .description{
+        font-size: 10px;
+        line-height: 10px;
+        margin-left: -5px;
+        margin-bottom: 15px;
+    }
+    
+    .submit-button-contacts{
+        width: 165px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .error-message-contacts{
+        font-size: 12px;
+        line-height: 10px;
+        margin-left: -5px;
+    }
+
+    .contact-info-page {
+        width: 100%;
+    }
+}
 

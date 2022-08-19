@@ -104,7 +104,9 @@ const Galery = () => {
       >
         {res.map((imag, index) => (
           <div className="slide" key={index}>
+
             <div style={{ backgroundImage: `url(${imag.image})` }}></div>
+
           </div>
         ))}
       </Slider>
@@ -112,3 +114,14 @@ const Galery = () => {
   );
 };
 export default Galery;
+/*
+
+        {kitchen_images.map((imag, index) => (
+          <div className="slide" key={index}>
+            <img src={imag.image} />
+            <div style={{backgroundImage:`url(${imag.image})`}}>
+
+            </div>
+          </div>
+        ))}
+        */

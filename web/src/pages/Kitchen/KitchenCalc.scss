@@ -1,12 +1,17 @@
 @import "../../styles/palette.scss";
 
-.wrapper{
-    margin-bottom: 450px;
+.wrapper-kitchen{
+    margin-bottom: 550px;
 }
 
 .header {
     height: 55px;
     width: 100%;
+}
+
+.localContainer {
+    max-width: 1480px;
+    margin: auto;
 }
 
 .calc-header{
@@ -157,7 +162,7 @@
     }
 
     &-input {
-        width: 270px;
+        width: 100%;
         height: 56px;
         text-align: center;
         background-color: $unhoveredColor;
@@ -287,4 +292,103 @@
     line-height: 21px;
     letter-spacing: 0.05em;
     margin-left: 80px;
+}
+
+
+@media (max-width: $xl) {
+    .wrapper-kitchen{
+        margin-bottom: 400px !important;
+    }
+
+    .calc {
+
+        &-img {
+            height: 740px !important;
+        }
+    }
+
+    .material {
+        &-price {
+            font-size: 18px !important;
+        }
+    }
+}
+
+@media (max-width: $lg) {
+    .wrapper-kitchen{
+        margin-bottom: 400px !important;
+    }
+
+    .calc {
+        &-title {
+            width: auto !important;
+            font-size: 44px !important;
+        }
+
+        &-items {
+            grid-template-columns: 1fr !important;
+          }
+
+        &-img {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: $xs) {
+    .calc {
+        height: 397px;
+        display: grid;
+        grid-column-gap: 40px;
+        margin-bottom: 5px;
+        font-family: $primaryFont;
+        font-weight: 600;
+    
+        &-title {
+            width: auto !important;
+            font-size: 44px !important;
+        }
+
+        &-text {
+            padding-top: 63px !important;     
+        }
+      
+        &-calc_titles {
+            margin: 20px 0 26px 20px !important;
+            text-align: left !important;
+        }
+    }
+
+    .material{
+        margin: 0 20px 0 20px !important;
+
+        &-name {
+            font-size: 18px !important;
+        }
+    
+        &-price {
+            font-size: 18px !important;
+            line-height: 24px !important;
+        }
+    }
+
+    .area {
+        margin: 0 20px 0 20px !important;
+    }
+
+    .total-price {
+        margin: 7px 20px 0 20px !important;
+    }
+
+    .contact-info {
+        margin: 50px 20px 0 20px !important;
+    }
+
+    .error-message{
+        margin-left: 20px !important;
+    }
+
+    .submit-button {
+        margin: 40px 20px 10px 20px !important;
+    }
 }

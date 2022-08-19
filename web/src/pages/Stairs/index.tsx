@@ -17,8 +17,7 @@ const StairsCalc = () => {
         .required('Length is required'),
     width: Yup.string()
         .required('Width is required'),
-    rise: Yup.string()
-        .required('Rise is required'),
+    rise: Yup.string(),
     name: Yup.string()
         .required('Name is required'),
     mobile: Yup.string()
@@ -30,16 +29,17 @@ const StairsCalc = () => {
 const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
 
 const [active, setActive] = useState("item_sosna")
-const [price, setPrice] = useState(12000)
+const [price, setPrice] = useState(1000)
 const [length, setLength] = useState(0)
 const [width, setWidth] = useState(0)
 const [rise, setRise] = useState(0)
 const [totalPrice, setTotalPrice] = useState(0)
 
 useEffect(() => {
-    setTotalPrice(price * length * width * rise)
-    setValue('total', price * length * width * rise)
-  }, [price, length, width, rise])
+    setTotalPrice(price * length * width / 10000)
+    setValue('total', (price * length * width / 10000))
+    setValue('rise', (length * width) / 10000)
+  }, [price, length, width])
 
 const HandleChangeMaterial = (event) => {
   setActive(event.target.id)
@@ -66,10 +66,10 @@ const sendEmail = async (data) => {
 };
 
 return (
-  <section className="wrapper">
+  <section className="wrapper-stairs">
     <div className="header" />
     <div className="calc-header" />
-    <div className="container">
+    <div className="localContainer">
       <div>
         <h2 className="calc-title">КАЛЬКУЛЯТОР СХОДІВ</h2>
         <p className="calc-text">РОЗРАХУЄМО ВАРТІСТЬ ЗАМОВЛЕННЯ</p>
@@ -85,7 +85,7 @@ return (
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
             <label className={active === "item_sosna" ? "material material_active" : "material "}>
-              <input {...register('material')} type="radio" value="sosna-12000" className="material-radio" id="item_sosna" defaultChecked
+              <input {...register('material')} type="radio" value="sosna-1000" className="material-radio" id="item_sosna" defaultChecked
                 onChange={HandleChangeMaterial}
                 name="material"
               />
@@ -160,7 +160,7 @@ return (
             <label className="area-title_block">
               <p className="area-title">ПІДЙОМ</p>
             </label>
-            <input {...register('rise')} type="text" className="area-input" placeholder="_ _ _ _ _" id="rise" name="rise"
+            <input {...register('rise')} type="text" className="area-input" placeholder="_ _ _ _ _" id="rise" name="rise" readOnly
               onChange={HandleChangeRise}
             />
             <label className="area-size_block">

@@ -3,12 +3,17 @@
 .services {
   height: 397px;
   display: grid;
-  grid-column-gap: 5px;
+  grid-column-gap: 14px;
 
   padding-top: -200px;
 
   &-top {
     grid-template-columns: 1fr 5fr 1fr;
+    padding-bottom: 14px;
+
+    .services-item:nth-child(3){
+      background-size: 135% 100%;
+    }
   }
 
   &-bottom {
@@ -21,6 +26,10 @@
     overflow: hidden;
     background-size: 100% 100%;
     transition: 0.6s ease-in-out;
+
+    &:nth-child(1){
+      background-size: 135% 100%;
+    }
 
     &_hovered {
       display: flex;
@@ -103,12 +112,27 @@
   }
 }
 
+
+@media (min-width: $xl){
+  .services{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .servicesLinks{
+    width: 90%;
+    margin: 0 auto;
+    padding: 170px 0 130px;
+  }
+  
+}
 @media (max-width: $lg) {
   .services {
     height: 307px;
     
     &-top {
       grid-template-columns: 1fr 4fr 1fr;
+      padding-bottom: 0;
     }
   
     &-bottom {
@@ -131,10 +155,17 @@
 
     &-top{
       margin-bottom: 20px;
+      .services-item:nth-child(3){
+        background-size: cover;
+      }
     }
 
     &-item{
       background-size: cover;
+
+      &:nth-child(1){
+        background-size: cover;
+      }
     }
   }
 
@@ -163,11 +194,7 @@
   
 }
 
-@media (max-width: $sm){
-  .services-bottom{
-    padding-top: 20px;
-  }
-}
+
 
 @media (max-width: $md){
 
@@ -186,5 +213,16 @@
     font-size: 38px;
     line-height: 1.5;
     
+  }
+}
+@media (max-width: $sm){
+  .services-bottom{
+    padding-top: 20px;
+  }
+  .servicesLinks a{
+    font-size: 28px;
+  }
+  .services-item:hover{
+    background-size: cover;
   }
 }

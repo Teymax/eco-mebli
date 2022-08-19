@@ -8,28 +8,49 @@
   }
 
   &-window {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
-    margin-top: 30px;
+    margin-top: 40px;
   }
 
   &-all-slides {
     height: 100%;
     display: flex;
     transition: 1.6s cubic-bezier(0.33, 0.11, 0.5, 1.03);
+    
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+.slide_body-circle img{
+  width: 100%;
+          height: 100%;
+          background: no-repeat center center;
+          background-size: cover;
+          overflow: hidden;
+      }
+
+
+    .slide_body-img{
+      width: 21%;
+    }
+/////////////////////////////////////////////////////////////////////////////////////
 .slide {
   background: no-repeat center center fixed;
   background-size: cover;
-  box-shadow: inset 0px -150px 50px -75px $darkColor;
+  //box-shadow: inset 0px -150px 50px -75px $darkColor;
+
+
+
+
 
   &_body {
     display: flex;
-    margin: 83px 15px;
-    justify-content: space-around;
+    margin: 150px 45px;
+    justify-content: center;
+    column-gap: 60px;
     align-items: center;
 
     position: relative;
@@ -39,6 +60,7 @@
       position: absolute;
       z-index: -1;
 
+      
       svg {
         width: 632px;
         height: 632px;
@@ -48,21 +70,27 @@
         width: 281px;
         height: 281px;
         position: absolute;
+        display: none;
         
       }
     }
 
     &-text {
       text-transform: uppercase;
-      margin-top: 115px;
+      margin-top: 140px;
 
       &_firstMt {
-        margin-top: -180px;
+        margin-top: -66px;
       }
 
       h2 {
-        font-size: 200px;
-        font-weight: 800;
+        font-size: 162px;
+        font-weight: 700;
+        line-height: 100.4%;
+
+
+       letter-spacing: -0.02em;
+       text-transform: uppercase;
      
 
         span {
@@ -120,7 +148,9 @@
 @media (max-width: $xl) {
   .slide {
     &_body {
-      justify-content: space-evenly;
+      justify-content: space-around;
+      margin: 114px 30px;
+      column-gap: 0;
       
       &-text {
         margin-top: 170px;
@@ -148,8 +178,8 @@
         margin-top: 50px;
 
         svg {
-          width: 568px;
-          height: 568px;
+          width: 490px;
+          height: 490px;
         }
       }
     }
@@ -170,13 +200,14 @@
   .slide {
     &_body {
       &-text {
-        margin-top: 371px;
+        margin-top: 144px;
 
         &_firstMt {
           margin-top: -85px;;
         }
         h2 {
-          font-size: 138px;
+          font-size: 125px;
+          font-weight: 650;
         }
         h4 {
           font-size: 28px;
@@ -184,24 +215,36 @@
       }
 
       &-img {
-        width: 33%;
+        width: 25%;
+        margin-top: -112px !important;
       }
 
       &-circle {
-        margin-top: 50px;
+        margin-top: 25px;
 
         svg {
-          width: 568px;
-          height: 568px;
+          width: 400px;
+          height: 400px;
         }
       }
     }
   }
 }
 
+
+@media (max-width: $md){
+  .slide {
+    &_body {
+      margin: 83px 55px;
+    }
+
+}
+}
+
 @media (max-width: $sm){
     .slide {
     &_body {
+      margin: 83px 50px;
       &-text {
         margin-top: 220px;
         width: 300px;
@@ -214,10 +257,10 @@
         }
         h2 {
           font-size: 105px;
-          
+          margin-top: -60px;
         }
         h4{
-          margin-right: -200px;
+          margin-right: -102px;
           margin-top: 25px;
         }
        
@@ -228,8 +271,8 @@
      
 
       &-img{
-        margin: -80px 0px 0px 0px !important;
-        width: 250px;
+        margin: -190px 0px 0px 0px !important;
+        width: 31%;
       }
       
     }
@@ -243,20 +286,27 @@
 @media (max-width: $xs){
   .slide {
     &_body {
+
+      margin: 83px 0px;
+
       &-text {
         margin-top: 0px;
         padding-top: 350px;
-        width: 200px;
+        width: 240px;
         z-index: 9;
 
         &_firstMt {
           margin-top: -85px;;
         }
         h2 {
-          font-size: 85px;
+          font-size: 95px;
+
+          span {
+            margin-left: 0.6em;
+          }
         }
         h4{
-          margin-right: -135px;
+          margin-right: -105px;
           margin-top: 25px;
           color: $secondTextColor;
          
@@ -271,8 +321,9 @@
      
 
       &-img{
-        margin: -130px 00px 0px 0px !important;
-        width: 210px;
+        margin: -270px 00px 0px 0px !important;
+        //width: 210px;
+        width: 49%;
       }
       
     }

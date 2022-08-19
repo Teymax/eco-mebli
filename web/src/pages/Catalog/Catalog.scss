@@ -15,6 +15,11 @@
     z-index: -1;
 }
 
+.localContainer {
+    max-width: 1480px;
+    margin: auto;
+}
+
 .catalog {
   height: 397px;
   display: grid;
@@ -78,6 +83,97 @@
   }
 }
 
+@media (min-width: $xl) and (max-width: 1480px) {
+  .localContainer {
+    margin: auto 20px auto 20px !important;
+  }
+}
+
+@media (max-width: $xl) {
+  .catalog {  
+    grid-column-gap: 20px;
+    &-item {
+      height: 500px;
+    }
+  }
+
+  .localContainer {
+    max-width: $xl !important;
+    margin: auto 20px auto 20px !important;
+  }
+}
+
 @media (max-width: $lg) {
+  .catalog-wrapper{
+    margin-bottom: 200px;
+  }
+
+  .catalog {  
+    &-item {
+      height: 450px;
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .catalog-wrapper{
+    margin-bottom: 140px;
+  }
+
+  .catalog {  
+    &-item {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  .catalog-wrapper{
+    margin-bottom: 370px;
+  }
+
+  .catalog {  
+    grid-gap: 20px;
+
+    &-items {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &_resp{
+      grid-column: span 2;
+      margin: 0 auto 0 auto;
+      width: 426px;
+    }
+
+    &-item {
+      height: 370px;
+    }
+  }
+}
+
+@media (max-width: $xs) {
+  .catalog-wrapper{
+    margin-bottom: 1050px;
+  }
+  
+
+  .catalog {  
+    row-gap: 20px;
+
+    &-items {
+      grid-template-columns: none !important;
+      grid-template-rows: 1fr 1fr 1fr !important;
+    }
+
+    &_resp{
+      grid-column: 1;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &-item {
+      height: 460px;
+    }
+  }
   
 }
