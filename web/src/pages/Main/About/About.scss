@@ -1,13 +1,12 @@
 @import "../../../styles/palette.scss";
 
-
-.lastLogo  {
+.lastLogo {
   display: none;
 }
-.firstLogo{
+.firstLogo {
   display: none;
 }
-.about_circule{
+.about_circule {
   display: none;
 }
 
@@ -15,13 +14,14 @@
   //margin-top: 50px;
   padding-top: 70px;
   display: flex;
-  width: 90%;///
-    margin: auto;///
+  width: 90%; ///
+  margin: auto; ///
   h2 {
     font-size: 144px;
     font-weight: 700;
     text-transform: uppercase;
     height: fit-content;
+    padding-right: 100px;
   }
 
   .vl {
@@ -85,31 +85,30 @@
   }
 }
 
-
 @media (max-width: $xl) {
   .about-item-description {
     margin-left: 35px;
-    
+
     &_subtitle {
       font-size: 32px;
     }
-    
+
     &_title {
       font-size: 64px;
     }
-    
+
     &_text {
       margin-top: 50px;
     }
-    
+
     &-withLogo {
       align-items: center;
-      
+
       h6 {
         margin-top: 60px;
         line-height: 1.75;
       }
-      
+
       img {
         width: 320px;
         height: 320px;
@@ -119,8 +118,17 @@
 }
 
 @media (max-width: $lg) {
-  .about .vl{
+  .about .vl {
     margin: 121px 0 0 -83px;
+  }
+  .about-item_circule {
+    width: 89px; ///????????
+  }
+
+  .about {
+    h2 {
+      padding-right: 100px;
+    }
   }
   .about-item {
     margin: 80px 0 0 -48px;
@@ -128,23 +136,20 @@
     &-description {
       width: 100%;
 
-      h5{
+      h5 {
         font-size: 26px;
       }
 
-      &_text{
+      &_text {
         font-size: 26px;
       }
 
       &-withLogo {
-
         h6 {
           font-size: 26px;
           margin-top: 30px;
           line-height: 1.5;
         }
-
-       
 
         img {
           width: 240px;
@@ -155,61 +160,72 @@
   }
 }
 
-
-@media (max-width: $md){
-
-
-  .about-item_circule{
-    width: 89px; ///????????
-   
+@media (max-width: $md) {
+  .about {
+    display: block;
+    h2 {
+      padding-right: 0px;
+      text-align: center;
+    }
   }
 
+  .about-item {
+    &-description {
+      overflow: hidden;
+      word-break: break-word;
+      text-align: center;
+      background-color: $darkColor;
+      margin-left: 0;
+    }
+  }
+
+  .about-item_circule {
+    display: none; ///????????
+  }
+  .about .vl {
+    display: none; ///????????
+  }
 }
 
-
-@media (max-width: $sm){
-
-  .lastLogo{
+@media (max-width: $sm) {
+  .lastLogo {
     display: block;
     max-width: 80%;
     margin: auto;
     margin-bottom: -295px;
     overflow: hidden;
     background-color: $darkColor;
-}
+  }
 
-  .lastLogo img{
+  .lastLogo img {
     width: 100%;
     //height: 310px;
     margin: auto;
-    
   }
 
-  .firstLogo{
+  .firstLogo {
     display: block;
     width: 100%;
     position: absolute;
     top: 800px;
     z-index: 1;
-    
+
     overflow: hidden;
   }
 
-  .firstLogo img{
+  .firstLogo img {
     width: 300px;
     height: 310px;
     margin-left: 78%;
   }
-  
 
-
-  .about{
+  .about {
     width: 90%;
     margin: 0 auto;
     display: block; //
 
-    &_circule{
-      display: block;
+    &_circule {
+      display: none;
       width: 60px;
       height: 60px;
       border-radius: 50%;
@@ -219,113 +235,95 @@
       left: -42px;
     }
 
-    & .vl{
+    & .vl {
       margin: 110px 0 0 -63px;
-    display: block;
-    width: 35px;
-   height: 2000px;
-    position: absolute;
-    left: 60%;
-    margin-top: -120px;
-    z-index: 0;
+      display: none;
+      width: 35px;
+      height: 2000px;
+      position: absolute;
+      left: 60%;
+      margin-top: -120px;
+      z-index: 0;
     }
 
-    & h2{
-      
+    & h2 {
       width: 250px;
       margin: auto;
       font-size: 100px;
     }
-
   }
 
-
-
-  .about-item:nth-child(1){
+  .about-item:nth-child(1) {
     margin-top: 50px;
   }
 
-  
-
-
-
-  .about-item{
+  .about-item {
     width: 100%;
     margin: auto;
     margin-bottom: 100px;
 
-   
-
-    &_circule{ 
+    &_circule {
       display: none; ///
-     
-     }
+    }
 
-     
-
-    &-description{
+    &-description {
       overflow: hidden;
       word-break: break-word;
       width: fit-content;
       text-align: center;
       background-color: $darkColor;
       margin-left: 0;
-      
-      &_subtitle{
+
+      &_subtitle {
         font-size: 28px;
-        
       }
 
-      &_text{
+      &_text {
         font-size: 28px;
         margin-top: 35px;
       }
 
-      &-withLogo{
+      &-withLogo {
         text-align: center;
         overflow: hidden;
         margin-top: 0;
       }
 
-      &-withLogo h6{
+      &-withLogo h6 {
         font-size: 28px;
         margin-top: 35px;
       }
-
     }
 
-    &-description img{
+    &-description img {
       display: none;
     }
   }
 }
 
-@media (max-width: $xs){
-
-  .firstLogo img{
-     margin-left: 63%;
+@media (max-width: $xs) {
+  .firstLogo img {
+    margin-left: 63%;
   }
-  .lastLogo{
-   // width: 310px;
+  .lastLogo {
+    // width: 310px;
     margin-bottom: -140px;
     background-color: $darkColor;
   }
 
-  
-
-  .about{
+  .about {
     width: 85%;
     margin: 0 auto;
 
-    & .vl{
+    & .vl {
       left: 65%;
       width: 25px;
       height: 1700px;
       margin-top: -100px;
     }
   }
-  
-  .about h2{
+
+  .about h2 {
     font-size: 90px;
   }
 
@@ -334,52 +332,42 @@
     row-gap: 160px;
     font-size: 50px;
 
-
-   
-
     &-description {
       overflow: hidden;
       word-break: break-word;
       text-align: center;
       background-color: $darkColor;
       margin-left: 0;
-    
-   
-    &_title{
-      font-size: 40px;
-    }
 
-    &_subtitle{
-      font-size: 18px;
-      
-    }
+      &_title {
+        font-size: 40px;
+      }
 
-    &_text{
-      font-size: 18px;
-      margin-top: 20px;
-    }
+      &_subtitle {
+        font-size: 18px;
+      }
 
-    &-withLogo{
-      text-align: center;
-      
-      
-    }
+      &_text {
+        font-size: 18px;
+        margin-top: 20px;
+      }
 
-    &-withLogo h6{
-      font-size: 18px;
-      margin-top: 25px;
-      
-    }
-  
+      &-withLogo {
+        text-align: center;
+      }
 
-    &-description img{
-      display: none;
-    }
+      &-withLogo h6 {
+        font-size: 18px;
+        margin-top: 25px;
+      }
 
-        img {
-          display: none;
-        }
+      &-description img {
+        display: none;
+      }
+
+      img {
+        display: none;
       }
     }
   }
-
+}

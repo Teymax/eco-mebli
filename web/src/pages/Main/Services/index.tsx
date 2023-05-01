@@ -200,13 +200,13 @@ const Services = () => {
         </div>
 
         <div className="servicesLinks">
-          <Link to="/">
+          <Link to="/contacts">
             доставка <br /> та монтаж
           </Link>
-          <Link to="/">
+          <Link to="/contacts">
             безкоштовна <br /> консультація
           </Link>
-          <Link to="/">
+          <Link to="/contacts">
             виїзд <br /> на заміри
           </Link>
         </div>
