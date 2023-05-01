@@ -15,7 +15,7 @@ const Contacts = () => {
     name: Yup.string()
         .required('Name is required'),
     mobile: Yup.string()
-        .matches(/^((38)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,10}$/, 'Mobile must be valid'),
+        .matches(/^(?:\+38)?(?:\([0-9]{3}\)[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|[0-9]{3}[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[0-9]{7})$/, 'Mobile must be valid'),
     email: Yup.string()
           .required('Email is required')
           .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'E-mail must be valid'),
@@ -26,7 +26,7 @@ const Contacts = () => {
   const sendEmail = async (data) => {
     try {
       console.log(data);
-      const res = await axios.post("https://test.teymax.com/api/mailer.php", data)
+      const res = await axios.post("https://ecomebli.com.ua/api/mailer.php", data)
     } catch (error) {
       console.log(error)
     }

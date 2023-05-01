@@ -29,10 +29,7 @@ const KitchenCalc = () => {
     name: Yup.string().required("Name is required"),
     mobile: Yup.string()
       .required("Mobile is required")
-      .matches(
-        /^((38)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,10}$/,
-        "Mobile must be valid"
-      ),
+      .matches(/^(?:\+38)?(?:\([0-9]{3}\)[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|[0-9]{3}[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[0-9]{7})$/, 'Mobile must be valid'),
     email: Yup.string()
       .required("Email is required")
       .matches(
@@ -76,7 +73,7 @@ const KitchenCalc = () => {
     try {
       console.log(data);
       const res = await axios.post(
-        "https://test.teymax.com/api/mailer.php",
+        "https://ecomebli.com.ua/api/mailer.php",
         data
       );
     } catch (error) {
