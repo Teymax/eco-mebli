@@ -100,6 +100,7 @@ const KitchenCalc = () => {
             })}
           >
             <input {...register("product")} type="hidden" value="kitchen" />
+            <input {...register("material")} type="hidden" value={options[active][0]} />
             <p className="calc-calc_titles">СИРОВИНА</p>
             <div>
               <Select

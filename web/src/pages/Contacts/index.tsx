@@ -92,10 +92,10 @@ const Contacts = () => {
             <div className="media">
               <p className="text media-title">соціальні мережі</p>
               <div className="icons">
-                <a href="https://www.facebook.com/people/Максім-Ходаківський/100010979947511/">
+                <a href="https://www.facebook.com/people/Максім-Ходаківський/100010979947511/" target="_blank" rel="norefferer noreferrer">
                   <img src={facebookIcon} className="icon"></img>
                 </a>
-                <a href="https://www.instagram.com/eco_mebli/">
+                <a href="https://www.instagram.com/eco_mebli/" target="_blank" rel="norefferer noreferrer">
                   <img src={instagramIcon} className="icon"></img>
                 </a>
               </div>

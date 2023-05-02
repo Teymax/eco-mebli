@@ -101,6 +101,7 @@ return (
           })}
         >
           <input {...register('product')} type='hidden' value="stairs"/>
+          <input {...register("material")} type="hidden" value={options[active][0]} />
           <p className="calc-calc_titles">СИРОВИНА</p>
           <div>
           <Select options={

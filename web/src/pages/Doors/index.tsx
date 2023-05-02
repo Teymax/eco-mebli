@@ -83,7 +83,7 @@ const DoorsCalc = () => {
 
   const sendEmail = async (data) => {
     try {
-      console.log(data);
+      console.log('Data: ', data);
       const res = await axios.post(
         "https://ecomebli.com.ua/api/mailer.php",
         data
@@ -112,6 +112,7 @@ const DoorsCalc = () => {
             })}
           >
             <input {...register("product")} type="hidden" value="doors" />
+            <input {...register("material")} type="hidden" value={options[active][0]} />
             <p className="calc-calc_titles">СИРОВИНА</p>
             <div>
               <Select
