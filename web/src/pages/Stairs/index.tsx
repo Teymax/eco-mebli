@@ -36,12 +36,10 @@ const StairsCalc = () => {
     name: Yup.string()
         .required('Name is required'),
     mobile: Yup.string()
-        .required('Mobile is required')
-        .matches(/^(?:\+38)?(?:\([0-9]{3}\)[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|[0-9]{3}[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[0-9]{7})$/, 'Mobile must be valid'),
+        .required('Mobile is required'),
     total: Yup.string(),
     email: Yup.string()
-          .required('Email is required')
-          .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'E-mail must be valid'),
+          .required('Email is required'),
   });
   
 const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
@@ -62,6 +60,7 @@ useEffect(() => {
 const HandleChangeMaterial = (a) => {
   setActive(a)
   setPrice(options[a][1])
+  console.log('Material: ', a, ' // ',options[active])
 }
 
 const HandleChangeLength = (event) => {

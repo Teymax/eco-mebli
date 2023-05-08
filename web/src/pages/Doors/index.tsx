@@ -8,7 +8,7 @@ import Select from "../../components/Select/Select";
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
-const options: [string, number][] = [
+let options: [string, number][] = [
   ["ВІЛЬХА", 6945],
   ["СОСНА", 6945],
   ["ЯСЕН", 8334],
@@ -30,15 +30,10 @@ const DoorsCalc = () => {
     area: Yup.string(),
     name: Yup.string().required("Name is required"),
     mobile: Yup.string()
-      .required("Mobile is required")
-      .matches(/^(?:\+38)?(?:\([0-9]{3}\)[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|[0-9]{3}[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[0-9]{7})$/, 'Mobile must be valid'),
+      .required("Mobile is required"),
     total: Yup.string(),
     email: Yup.string()
-      .required("Email is required")
-      .matches(
-        /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-        "E-mail must be valid"
-      ),
+      .required("Email is required"),
   });
 
   const {
@@ -70,6 +65,7 @@ const DoorsCalc = () => {
     setActive(a);
     setPrice(options[a][1]);
   };
+  console.log(options[active])
 
   const HandleChangeLength = (event) => {
     setLength(event.target.value);
@@ -83,7 +79,7 @@ const DoorsCalc = () => {
 
   const sendEmail = async (data) => {
     try {
-      console.log('Data: ', data);
+      console.log(data);
       const res = await axios.post(
         "https://ecomebli.com.ua/api/mailer.php",
         data

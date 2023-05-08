@@ -15,10 +15,9 @@ const Contacts = () => {
     name: Yup.string()
         .required('Name is required'),
     mobile: Yup.string()
-        .matches(/^(?:\+38)?(?:\([0-9]{3}\)[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|[0-9]{3}[ .-]?[0-9]{3}[ .-]?[0-9]{2}[ .-]?[0-9]{2}|044[0-9]{7})$/, 'Mobile must be valid'),
+          .required('Mobile is required'),
     email: Yup.string()
-          .required('Email is required')
-          .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'E-mail must be valid'),
+          .required('Email is required'),
   });
   
   const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm({mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema)})
@@ -27,6 +26,7 @@ const Contacts = () => {
     try {
       console.log(data);
       const res = await axios.post("https://ecomebli.com.ua/api/mailer.php", data)
+      alert('Response: ' + res);
     } catch (error) {
       console.log(error)
     }
