@@ -18,7 +18,7 @@ const Galery = () => {
 
   const { title } = useParams()
   let res;
-  let to: string | null = null
+  let to: string = '/contacts'
   switch (title) {
     case "bath":
       res = imagesJson.bath;

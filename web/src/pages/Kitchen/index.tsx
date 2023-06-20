@@ -44,6 +44,7 @@ const KitchenCalc = () => {
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
+  const [notification, setNotification] = useState<{ message: string, status: boolean } | null>(null)
 
   const [active, setActive] = useState(0);
   const [price, setPrice] = useState(options[0][1]);
@@ -58,7 +59,7 @@ const KitchenCalc = () => {
   const HandleChangeMaterial = (a) => {
     setActive(a);
     setPrice(options[a][1]);
-    console.log('Material: ', a, ' // ',options[active])
+    console.log('Material: ', a, ' // ', options[active])
   };
 
   const HandleChangeArea = (event) => {
@@ -68,12 +69,23 @@ const KitchenCalc = () => {
   const sendEmail = async (data) => {
     try {
       console.log(data);
-      const res = await axios.post(
-        "https://ecomebli.com.ua/api/mailer.php",
-        data
-      );
+      const res = await axios.post("https://ecomebli.com.ua/api/mailer.php", data)
+
+      const notification = res.data.status ? {
+        message: "Ваш запит в обробці",
+        status: true
+      } : {
+        message: "Сталася помилка при відправці",
+        status: false
+      }
+
+      setNotification(notification)
     } catch (error) {
-      console.log(error);
+      setNotification({
+        message: "Сталася помилка при відправці, повторіть пізніше",
+        status: false
+      })
+      console.log(error)
     }
   };
 
@@ -186,6 +198,10 @@ const KitchenCalc = () => {
             ) : (
               <></>
             )}
+            {
+              notification ?
+                <span className={notification.status ? "success-message" : "error-message"}>{notification.message}<br /></span> : <></>
+            }
             <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
           </form>
           <div className="slide-container">

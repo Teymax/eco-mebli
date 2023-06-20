@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./DoorsCalc.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -47,6 +47,7 @@ const DoorsCalc = () => {
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
+  const [notification, setNotification] = useState<{ message: string, status: boolean } | null>(null)
 
   const [active, setActive] = useState(0);
   const [price, setPrice] = useState(options[0][1]);
@@ -80,15 +81,25 @@ const DoorsCalc = () => {
   const sendEmail = async (data) => {
     try {
       console.log(data);
-      const res = await axios.post(
-        "https://ecomebli.com.ua/api/mailer.php",
-        data
-      );
+      const res = await axios.post("https://ecomebli.com.ua/api/mailer.php", data)
+
+      const notification = res.data.status ? {
+        message: "Ваш запит в обробці",
+        status: true
+      } : {
+        message: "Сталася помилка при відправці",
+        status: false
+      }
+
+      setNotification(notification)
     } catch (error) {
-      console.log(error);
+      setNotification({
+        message: "Сталася помилка при відправці, повторіть пізніше",
+        status: false
+      })
+      console.log(error)
     }
   };
-
   return (
     <section className="wrapper-doors">
       <div className="header" />
@@ -228,6 +239,10 @@ const DoorsCalc = () => {
             ) : (
               <></>
             )}
+            {
+              notification ?
+                <span className={notification.status ? "success-message" : "error-message"}>{notification.message}<br /></span> : <></>
+            }
             <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
           </form>
           <div className="slide-container">
