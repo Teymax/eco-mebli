@@ -66,7 +66,7 @@ const Galery = () => {
             {to ? (
               <>
                 <p>для розрахування вартості</p>
-                <Link to="/">
+                <Link to={to}>
                   <p className="backgroundImg-offer_button">натисніть сюди</p>
                 </Link>
               </>
