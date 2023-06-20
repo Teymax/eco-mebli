@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import "./DoorsCalc.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,20 +21,20 @@ const fadeImages = [
   "/assets/photos/doors/IMG_8318.jpg"
 ];
 
+const validationSchema = Yup.object().shape({
+  material: Yup.string().required("Material is required"),
+  length: Yup.string().required("Length is required"),
+  width: Yup.string().required("Width is required"),
+  area: Yup.string(),
+  name: Yup.string().required("Name is required"),
+  mobile: Yup.string()
+    .required("Mobile is required"),
+  total: Yup.string(),
+  email: Yup.string()
+    .required("Email is required"),
+});
 
 const DoorsCalc = () => {
-  const validationSchema = Yup.object().shape({
-    material: Yup.string().required("Material is required"),
-    length: Yup.string().required("Length is required"),
-    width: Yup.string().required("Width is required"),
-    area: Yup.string(),
-    name: Yup.string().required("Name is required"),
-    mobile: Yup.string()
-      .required("Mobile is required"),
-    total: Yup.string(),
-    email: Yup.string()
-      .required("Email is required"),
-  });
 
   const {
     register,
@@ -232,15 +232,13 @@ const DoorsCalc = () => {
           </form>
           <div className="slide-container">
             <Fade cssClass=" calc-img_door_block">
-              <div className="each-fade">
-                <img src={fadeImages[0]} className="calc-img_door"/>
-              </div>
-              <div className="each-fade">
-                <img src={fadeImages[1]} className="calc-img_door"/>
-              </div>
-              <div className="each-fade">
-                <img src={fadeImages[2]} className="calc-img_door"/>
-              </div>
+              {fadeImages.map((img, inx) => {
+                return (
+                  <div className="each-fade" key={inx}>
+                    <img src={img} className="calc-img_door" alt="doors_img" />
+                  </div>
+                )
+              })}
             </Fade>
           </div>
         </div>
