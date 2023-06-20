@@ -1,8 +1,11 @@
+
 import "./Galery.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import imagesJson from "../Works/imagesJson.json";
 import Slider from "./Slider";
+
+
 const Galery = () => {
   const location = useLocation();
   const [indexForSlider, setIndexForSlider] = useState(0);
@@ -13,23 +16,27 @@ const Galery = () => {
     setActive(true);
   };
 
-  const {title} = useParams()
+  const { title } = useParams()
   let res;
+  let to: string | null = null
   switch (title) {
     case "bath":
       res = imagesJson.bath;
       break;
     case "doors":
       res = imagesJson.doors;
+      to = '/doors'
       break;
     case "armchairs":
       res = imagesJson.armchairs;
       break;
     case "kitchens":
       res = imagesJson.kitchens;
+      to = '/kitchen'
       break;
     case "stairs":
       res = imagesJson.stairs;
+      to = '/stairs'
       break;
     case "light":
       res = imagesJson.light;
@@ -47,17 +54,23 @@ const Galery = () => {
       res = imagesJson.cabinets;
       break;
   }
+
+  console.log("galery", res)
+
   return (
     <section>
-      {console.log(res)}
       <div className="backgroundImg">
         <div className="backgroundImg-offer">
           <h2 className="backgroundImg-offer-text">{data.title}</h2>
           <span className="backgroundImg-offer_bottom">
-            <p>для розрахування вартості</p>
-            <Link to="/">
-              <p className="backgroundImg-offer_button">натисніть сюди</p>
-            </Link>
+            {to ? (
+              <>
+                <p>для розрахування вартості</p>
+                <Link to="/">
+                  <p className="backgroundImg-offer_button">натисніть сюди</p>
+                </Link>
+              </>
+            ) : null}
           </span>
         </div>
       </div>
@@ -114,14 +127,3 @@ const Galery = () => {
   );
 };
 export default Galery;
-/*
-
-        {kitchen_images.map((imag, index) => (
-          <div className="slide" key={index}>
-            <img src={imag.image} />
-            <div style={{backgroundImage:`url(${imag.image})`}}>
-
-            </div>
-          </div>
-        ))}
-        */
