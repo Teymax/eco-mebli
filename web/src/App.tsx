@@ -16,6 +16,8 @@ import DoorsCalc from "./pages/Doors";
 
 import "./styles/main.scss";
 
+
+
 function App() {
   return (
     <BrowserRouter>

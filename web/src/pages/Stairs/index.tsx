@@ -18,14 +18,48 @@ const options: [string, number][] = [
 ]
 
 const fadeImages = [
-  "/assets/photos/stairs/IMG_8557.jpg",
   "/assets/photos/stairs/new-stairs-4.jpg",
   "/assets/photos/stairs/IMG_8685.jpg",
   "/assets/photos/stairs/new-stairs-2.jpg",
   "/assets/photos/stairs/new-stairs-5.jpg",
   "/assets/photos/stairs/new-stairs-1.jpg",
   "/assets/photos/stairs/new-stairs-3.jpg",
+  "/assets/photos/stairs/IMG_8557.jpg",
 ];
+
+const fields = [
+  {
+    start: "ДОВЖИНА МАРШУ",
+    end: "M",
+    name: "length"
+  },
+  {
+    start: "ШИРИНА МАРШУ",
+    end: "M",
+    name: "width"
+  },
+  {
+    start: "ПІДЙОМ",
+    end: "КВ. М.",
+    name: "rise",
+    readonly: true
+  },
+]
+
+const contactFields = [
+  {
+    label: "ВАШЕ ІМ'Я",
+    name: 'name'
+  },
+  {
+    label: "НОМЕР ТЕЛ.",
+    name: 'mobile'
+  },
+  {
+    label: "ПОШТА",
+    name: 'email'
+  },
+]
 
 const validationSchema = Yup.object().shape({
   material: Yup.string()
@@ -44,38 +78,60 @@ const validationSchema = Yup.object().shape({
     .required('Email is required'),
 });
 
+const PromptMessage: React.FC<{ show: boolean, text: string, type: "success" | "error" }> = ({ show, text, type = 'error' }) => {
+  if (!show) {
+    return null
+  }
+
+  return (
+    <span className={`${type}-message`}>{text}</span>
+  )
+}
+
 const StairsCalc = () => {
-  const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm({ mode: 'onTouched', reValidateMode: 'onChange', resolver: yupResolver(validationSchema) })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    reset,
+    watch
+  } = useForm<{ [key: string]: any }>({
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      product: 'stairs',
+      material: options[0][0],
+      price: options[0][1],
+      length: null,
+      width: null,
+      rise: null,
+      total: 0
+    }
+  })
   const [notification, setNotification] = useState<{ message: string, status: boolean } | null>(null)
 
   const [active, setActive] = useState(0)
-  const [price, setPrice] = useState(options[0][1])
-  const [length, setLength] = useState(0)
-  const [width, setWidth] = useState(0)
-  const [rise, setRise] = useState(0)
-  const [totalPrice, setTotalPrice] = useState(0)
+
+  const { rise, length, width, material, total } = watch()
+
+  const price = options[active][1]
+
+  console.log({ rise, length, width, material });
+
 
   useEffect(() => {
-    setTotalPrice(price * length * width / 10000)
-    setValue('total', (price * length * width / 10000))
-    setValue('rise', ((length * width) / 10000).toFixed(2))
+    setValue('total', (price * length * width))
+    setValue('rise', ((length * width)).toFixed(2))
+
   }, [price, length, width])
 
   const HandleChangeMaterial = (a) => {
     setActive(a)
-    setPrice(options[a][1])
     console.log('Material: ', a, ' // ', options[active])
   }
 
-  const HandleChangeLength = (event) => {
-    setLength(event.target.value)
-  }
-  const HandleChangeWidth = (event) => {
-    setWidth(event.target.value)
-  }
-  const HandleChangeRise = (event) => {
-    setRise(event.target.value)
-  }
 
   const sendEmail = async (data) => {
     try {
@@ -113,7 +169,6 @@ const StairsCalc = () => {
           <form className="calc-calc_block_stairs"
             onSubmit={handleSubmit((data) => {
               sendEmail(data)
-              setTotalPrice(0)
               reset()
             })}
           >
@@ -124,86 +179,67 @@ const StairsCalc = () => {
               <Select
                 options={options}
                 value={active}
-                onClick={(a) => { HandleChangeMaterial(a) }} />
+                onClick={(activeOption) => { HandleChangeMaterial(activeOption) }} />
             </div>
             <p className="calc-calc_titles">КАЛЬКУЛЯТОР ВАРТОСТІ ТОВАРУ</p>
-            <div className="area">
-              <label className="area-title_block">
-                <p className="area-title">ДОВЖИНА МАРШУ</p>
-              </label>
-              <input {...register('length')} type="text" className="area-input" placeholder="_ _ _ _ _" id="length" name="length"
-                onChange={HandleChangeLength}
-              />
-              <label className="area-size_block">
-                <p className="area-size">СМ.</p>
-              </label>
-            </div>
-            <div className="area">
-              <label className="area-title_block">
-                <p className="area-title">ШИРИНА МАРШУ</p>
-              </label>
-              <input {...register('width')} type="text" className="area-input" placeholder="_ _ _ _ _" id="width" name="width"
-                onChange={HandleChangeWidth}
-              />
-              <label className="area-size_block">
-                <p className="area-size">СМ.</p>
-              </label>
-            </div>
-            <div className="area">
-              <label className="area-title_block">
-                <p className="area-title">ПІДЙОМ</p>
-              </label>
-              <input {...register('rise')} type="text" className="area-input" placeholder="_ _ _ _ _" id="rise" name="rise" readOnly
-                onChange={HandleChangeRise}
-              />
-              <label className="area-size_block">
-                <p className="area-size">КВ. М.</p>
-              </label>
-            </div>
-            {
-              errors.length || errors.width || errors.rise ?
-                <span className="error-message">Будь ласка, вкажіть параметри сходів <br /></span> : <></>
-            }
+            {fields.map((field) => {
+              return (
+                <div className="area" key={field.name}>
+                  <label className="area-title_block">
+                    <p className="area-title">{field.start}</p>
+                  </label>
+                  <input
+                    {...register(field.name)}
+                    type="text"
+                    className="area-input"
+                    placeholder="_ _ _ _ _"
+                    id={field.name}
+                    name={field.name}
+                    readOnly={field.readonly}
+                  />
+                  <label className="area-size_block">
+                    <p className="area-size">{field.end}</p>
+                  </label>
+                </div>
+              )
+            })}
+            <PromptMessage
+              type='error'
+              show={errors.length || errors.width || errors.rise}
+              text={"Будь ласка, вкажіть параметри сходів "}
+            />
             <label className="total-price">
               <span className="total-price-text">ЗАГ. ВАРТІСТЬ</span>
-              <span className="total-price-result">{totalPrice.toFixed(2)}<p className="total-price-currency">ГРН</p></span>
+              <span className="total-price-result">{total.toFixed(2)}<p className="total-price-currency">ГРН</p></span>
             </label>
             <div className="contact-info">
-              <div className="contact-info-block">
-                <p className="contact-info-text">
-                  ВАШЕ ІМ'Я
-                </p>
-              </div>
-              <div className="contact-info-block">
-                <input type="text" className="contact-info-input" {...register('name')} name="name" />
-              </div>
-              <div className="contact-info-block">
-                <p className="contact-info-text">
-                  НОМЕР ТЕЛ.
-                </p>
-              </div>
-              <div className="contact-info-block">
-                <input type="text" className="contact-info-input" {...register('mobile')} name="mobile" />
-              </div>
-              <div className="contact-info-block">
-                <p className="contact-info-text">
-                  ПОШТА
-                </p>
-              </div>
-              <div className="contact-info-block">
-                <input type="text" className="contact-info-input" {...register('email')} name="email" />
-              </div>
+              {contactFields.map((field) => {
+                return (
+                  <React.Fragment key={field.name}>
+                    <div className="contact-info-block">
+                      <p className="contact-info-text">
+                        {field.label}
+                      </p>
+                    </div>
+                    <div className="contact-info-block">
+                      <input type="text" className="contact-info-input" {...register(field.name)} name={field.name} />
+                    </div>
+                  </React.Fragment>
+                )
+              })}
             </div>
-            {
-              errors.mobile ||
-                errors.name ||
-                errors.email ?
-                <span className="error-message">Будь ласка, вкажіть дійсні данні <br /></span> : <></>
-            }
-            {
-              notification ?
-                <span className={notification.status ? "success-message" : "error-message"}>{notification.message}<br /></span> : <></>
-            }
+            <PromptMessage
+              type='error'
+              show={errors.mobile || errors.name || errors.email}
+              text={"Будь ласка, вкажіть дійсні данні "}
+            />
+
+            <PromptMessage
+              show={!!notification}
+              type={notification?.status ? "success" : 'error'}
+              text={notification?.message || ""}
+            />
+
             <button className="submit-button">ЗАЛИШИТИ КОНТАКТИ</button>
           </form>
           <div className="slide-container">

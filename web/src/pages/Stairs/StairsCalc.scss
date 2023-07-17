@@ -1,6 +1,6 @@
 @import "../../styles/palette.scss";
 
-.wrapper-stairs{
+.wrapper-stairs {
     margin-bottom: 500px;
 }
 
@@ -14,7 +14,7 @@
     margin: auto;
 }
 
-.calc-header{
+.calc-header {
     background-image: url("../../assets/catalog_menu/background-1.png");
     background-repeat: no-repeat;
     background-size: auto;
@@ -31,7 +31,7 @@
     margin-bottom: 5px;
     font-family: $primaryFont;
     font-weight: 600;
-  
+
     &-title {
         height: 64px;
         width: 750px;
@@ -48,9 +48,9 @@
         line-height: 163.9%;
         letter-spacing: 0.02em;
     }
-  
+
     &-items {
-      grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     &-calc_block_stairs {
@@ -80,7 +80,6 @@
         width: 100%;
     }
 }
-
 
 .area {
     display: grid;
@@ -118,6 +117,9 @@
         font-size: 24px;
         line-height: 21px;
         letter-spacing: 0.05em;
+        &:read-only {
+            outline: none;
+        }
     }
     &-input::placeholder {
         text-align: center;
@@ -225,7 +227,7 @@
     border: none;
     color: $darkColor;
     font-family: $primaryFont;
-     
+
     font-weight: 600;
     font-size: 18px;
     line-height: 21px;
@@ -233,7 +235,7 @@
     cursor: pointer;
 }
 
-.error-message{
+.error-message {
     color: $errorMessage;
     font-size: 18px;
     line-height: 21px;
@@ -242,33 +244,30 @@
 }
 
 @media (max-width: $lg) {
-    .wrapper-stairs{
-      margin-bottom: 500px;
+    .wrapper-stairs {
+        margin-bottom: 500px;
     }
     .calc {
-    
         &-img_stairs {
             display: none;
         }
     }
-  }
-  
-  @media (max-width: $md) {
-    .wrapper-stairs{
-      margin-bottom: 440px;
-    }
+}
 
-  }   
-  
-  @media (max-width: $sm) {
-    .wrapper-stairs{
+@media (max-width: $md) {
+    .wrapper-stairs {
+        margin-bottom: 440px;
+    }
+}
+
+@media (max-width: $sm) {
+    .wrapper-stairs {
         margin-bottom: 400px;
-      }
-  }
-  
-  @media (max-width: $xs) {
-    .wrapper-stairs{
+    }
+}
+
+@media (max-width: $xs) {
+    .wrapper-stairs {
         margin-bottom: 500px;
-      }
-    
-  }
+    }
+}
